@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DepartmentOfCommerceProject.Core;
 
 namespace DepartmentOfCommerceProject
 {
@@ -23,6 +24,18 @@ namespace DepartmentOfCommerceProject
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        {
+            string login = loginTextBox.Text;
+            string pass = passwordTextBox.Password;
+
+            loginTextBox.Text = "";
+            passwordTextBox.Password = "";
+
+            string hash = Crypto.GetMd5Hash(login + ":" + pass);
+            MessageBox.Show(hash);
         }
     }
 }
