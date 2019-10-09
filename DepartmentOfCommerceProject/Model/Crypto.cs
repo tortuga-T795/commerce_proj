@@ -2,7 +2,7 @@
 using System.Text;
 using System.Security.Cryptography;
 
-namespace DepartmentOfCommerceProject.Core
+namespace DepartmentOfCommerceProject.Model
 {
     public static class Crypto
     {

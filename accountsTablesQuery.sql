@@ -1,3 +1,9 @@
+CREATE TABLE AccountTypes
+(
+    id INT NOT NULL IDENTITY(1, 1) PRIMARY KEY,
+    typeName NVARCHAR(40) NOT NULL
+);
+
 CREATE TABLE Accounts
 (
     token NVARCHAR(255) NOT NULL PRIMARY KEY,
