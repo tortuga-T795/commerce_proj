@@ -5,8 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DepartmentOfCommerceProject"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="400" Width="500" MinHeight="350" MinWidth="450">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Label Content="Tortuga" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" FontSize="30" />
+
+        <Grid Grid.Row="1" Grid.Column="1" Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="2*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" Content="Login: " FontSize="13" MinHeight="20" MinWidth="50" HorizontalAlignment="Right" Margin="5"/>
+            <TextBox Grid.Row="0" Grid.Column="1" x:Name="loginTextBox" MinWidth="150" Margin="7" />
+            <Label Grid.Row="1" Grid.Column="0" Content="Password: " FontSize="13" MinHeight="20" MinWidth="60" HorizontalAlignment="Right" Margin="5" />
+            <PasswordBox Grid.Row="1" Grid.Column="1" x:Name="passwordTextBox" MinWidth="150" Margin="7" />
+            <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Content="Zopa" Margin="5" MinWidth="150"/>
+        </Grid>
     </Grid>
 </Window>
