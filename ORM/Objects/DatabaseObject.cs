@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Data;
 using System.Reflection;
 using ORM.Attributes;
@@ -8,7 +9,20 @@ namespace ORM.Objects
 {
     public class DatabaseObject
     {
-        public DataRow Row { get; private set; }
+        private DataRow row;
+        public DataRow Row
+        {
+            get
+            {
+                return row;
+            }
+            set
+            {
+                // ыы
+                // вижла подсказала, сам я слишком тупой чтобы так написать)))
+                row = value ?? throw new ArgumentException(string.Format("In setter of {0}.Row value is null", GetType().ToString()));
+            }
+        }
 
         public void Attach(DataRow row)
         {
@@ -29,11 +43,6 @@ namespace ORM.Objects
 
         public void Commit()
         {
-            if (this.Row == null)
-            {
-                throw new RowIsNullException(string.Format("In object {0} Row is null", GetType().ToString()));
-            }
-
             PropertyInfo[] propertyes = this.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance);
 
             foreach (PropertyInfo property in propertyes)
