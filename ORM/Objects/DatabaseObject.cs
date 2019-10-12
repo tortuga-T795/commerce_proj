@@ -3,7 +3,6 @@ using System.Linq;
 using System.Data;
 using System.Reflection;
 using ORM.Attributes;
-using ORM.Exceptions;
 
 namespace ORM.Objects
 {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using ORM.Util;
 
 namespace ORM.Objects
 {
@@ -16,7 +16,7 @@ namespace ORM.Objects
         public DatabaseData(DataSet set)
         {
             this.Data = set;
-            this.TableName = Functions.GetTableName(typeof(T));
+            this.TableName = typeof(T).GetTableName();
         }
 
         public IEnumerable<T> Select()
@@ -56,6 +56,7 @@ namespace ORM.Objects
         {
             string condition = Functions.GetCondition(obj);
             DataRow row = this.Data.Tables[this.TableName].Select(condition)[0];
+            
 
             row.Delete();
         }
