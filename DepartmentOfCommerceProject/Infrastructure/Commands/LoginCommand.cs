@@ -8,7 +8,7 @@ using DepartmentOfCommerceProject.Infrastructure.BusinessObjects;
 
 namespace DepartmentOfCommerceProject.Infrastructure
 {
-    class LoginCommand : ICommand
+    public class LoginCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
 

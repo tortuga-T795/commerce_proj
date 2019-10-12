@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DepartmentOfCommerceProject.Infrastructure.BusinessObjects;
 
 namespace DepartmentOfCommerceProject.ViewModel
 {
-    class LoginWindowViewModel
+    public class LoginWindowViewModel : ViewModelBase
     {
+        
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace DepartmentOfCommerceProject.Infrastructure.BusinessObjects
 {
-    class LoginInfo
+    public class LoginInfo
     {
         private string login = "";
         private string pass = "";

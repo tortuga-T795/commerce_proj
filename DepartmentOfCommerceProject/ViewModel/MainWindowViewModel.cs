@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DepartmentOfCommerceProject.ViewModel
 {
-    class MainWindowViewModel
+    public class MainWindowViewModel
     {
     }
 }
