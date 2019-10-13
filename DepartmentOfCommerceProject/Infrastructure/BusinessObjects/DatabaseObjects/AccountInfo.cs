@@ -21,7 +21,7 @@ namespace DepartmentOfCommerceProject.Infrastructure.BusinessObjects.DatabaseObj
         public string Surname { get; private set; }
 
         [FieldName("accType")]
-        [ForeignKey(typeof(AccountType), "Id")]
+        [ForeignKey(typeof(AccountType), "Id", "TypeName")]
         public int AccountType { get; private set; }
     }
 }
