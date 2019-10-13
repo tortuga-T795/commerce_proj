@@ -11,7 +11,6 @@ namespace ORM.Objects
     {
         public DataSet Data { get; private set; }
         private string TableName { get; set; }
-        private string SequenceName { get; set; }
 
         public DatabaseData(DataSet set)
         {
