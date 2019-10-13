@@ -55,6 +55,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Infrastructure\BusinessObjects\DatabaseObjects\AccountInfo.cs" />
+    <Compile Include="Infrastructure\BusinessObjects\DatabaseObjects\AccountType.cs" />
     <Compile Include="Infrastructure\BusinessObjects\LoginInfo.cs" />
     <Compile Include="Infrastructure\Commands\LoginCommand.cs" />
     <Compile Include="ViewModel\LoginWindowViewModel.cs" />

@@ -11,7 +11,7 @@ namespace ORM.Util
     {
         public static string GetTableName(this Type type)
         {
-            TableNameAttribute attribute = type.GetCustomAttributes(typeof(TableNameAttribute), true).FirstOrDefault() as TableNameAttribute;
+            TableNameAttribute attribute = type.GetCustomAttribute<TableNameAttribute>(true);
             return attribute.Name;
         }
 
@@ -43,10 +43,10 @@ namespace ORM.Util
         {
             PropertyInfo primaryKeyProperty = obj.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance).Where((info) => 
             {
-                PrimaryKeyAttribute attr = info.GetCustomAttribute<PrimaryKeyAttribute>();
+                PrimaryKeyAttribute attr = info.GetCustomAttribute<PrimaryKeyAttribute>(true);
                 return attr == null;
             }).Last();
-            string primaryKeyFieldName = primaryKeyProperty.GetCustomAttribute<FieldNameAttribute>().Name;
+            string primaryKeyFieldName = primaryKeyProperty.GetCustomAttribute<FieldNameAttribute>(true).Name;
 
             string res = primaryKeyFieldName + " = ";
 

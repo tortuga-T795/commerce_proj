@@ -31,7 +31,7 @@ namespace ORM.Objects
 
             foreach (PropertyInfo property in propertyes)
             {
-                FieldNameAttribute attribute = property.GetCustomAttributes(typeof(FieldNameAttribute), true).FirstOrDefault() as FieldNameAttribute;
+                FieldNameAttribute attribute = property.GetCustomAttribute<FieldNameAttribute>(true);
                 if (attribute == null)
                 {
                     continue;
@@ -46,7 +46,7 @@ namespace ORM.Objects
 
             foreach (PropertyInfo property in propertyes)
             {
-                FieldNameAttribute attribute = property.GetCustomAttributes(typeof(FieldNameAttribute), true).FirstOrDefault() as FieldNameAttribute;
+                FieldNameAttribute attribute = property.GetCustomAttribute<FieldNameAttribute>(true);
                 if (attribute == null)
                 {
                     continue;

@@ -43,9 +43,15 @@ namespace ORM.Objects
             using (SqlConnection connection = new SqlConnection(this.ConnectionString))
             {
                 connection.Open();
-                SqlDataAdapter adapter = new SqlDataAdapter(selectQuery, connection);
-                SqlCommandBuilder builder = new SqlCommandBuilder(adapter);
-                adapter.Update(data.Data, tableName);
+
+                using (SqlDataAdapter adapter = new SqlDataAdapter(selectQuery, connection))
+                {
+                    using (SqlCommandBuilder builder = new SqlCommandBuilder(adapter))
+                    {
+                        adapter.Update(data.Data, tableName);
+                    }
+                }
+
                 connection.Close();
             }
         }
