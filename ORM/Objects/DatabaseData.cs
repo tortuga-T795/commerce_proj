@@ -54,20 +54,27 @@ namespace ORM.Objects
 
         public void Delete(T obj)
         {
-            string condition = Functions.GetCondition(obj);
+            string condition = obj.GetCondition();
             DataRow row = this.Data.Tables[this.TableName].Select(condition)[0];
-            
 
             row.Delete();
         }
 
         public void Edit(T obj)
         {
-            string condition = Functions.GetCondition(obj);
+            string condition = obj.GetCondition();
             DataRow row = this.Data.Tables[this.TableName].Select(condition)[0];
 
             obj.Commit();
-            row = obj.Row;
+
+            // это тоже хз работает ли, но прикол тут в том, что данные изменённого объекта
+            // записываются в его Row, и потом нужно изменить эти данные в DataSet'е ну и вот
+            for (int i = 0; i < row.ItemArray.Length; ++i)
+            {
+                row.ItemArray[i] = obj.Row.ItemArray[i];
+            }
+            // может и эта параша бы работала, но лучше написать пока не потерял идею)
+            //row = obj.Row;
         }
     }
 }

@@ -40,13 +40,12 @@ namespace ORM.Objects
             string tableName = typeof(T).GetTableName();
             string selectQuery = "SELECT * FROM " + tableName + " WHERE ROWNUM = 1";
 
-            DataSet resultSet = data.Data;
             using (SqlConnection connection = new SqlConnection(this.ConnectionString))
             {
                 connection.Open();
                 SqlDataAdapter adapter = new SqlDataAdapter(selectQuery, connection);
                 SqlCommandBuilder builder = new SqlCommandBuilder(adapter);
-                adapter.Update(resultSet, tableName);
+                adapter.Update(data.Data, tableName);
                 connection.Close();
             }
         }
