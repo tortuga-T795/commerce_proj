@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+using System.Collections.ObjectModel;
 
 namespace ORM.Attributes
 {
@@ -9,6 +10,16 @@ namespace ORM.Attributes
         public Type ReferencesType { get; private set; }
         public PropertyInfo ReferencesProperty { get; private set; }
         public PropertyInfo PrintProperty { get; private set; }
+
+        /// <summary>
+        /// Сие чудо костыльного образа мышления должно работать так:
+        ///     када селектается коллекция каких-та объектов, внутри которых нахоидтся ссыль на етыт объект,
+        ///         то селектается ещё и коллекция объектов, на которые ссылаются и записываются сюда, абы не потерять
+        ///         для послебующей работы
+        ///     а потом када работа непосредственно с коллекцией объектов закончилась, 
+        ///         то она останется здесь, шобы не проебаться)
+        /// </summary>
+        public ObservableCollection<object> CollectionToReference { get; set; }
 
         /// <summary>
         /// </summary>
