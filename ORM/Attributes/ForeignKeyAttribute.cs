@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Reflection;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 
 namespace ORM.Attributes
 {
@@ -19,7 +19,7 @@ namespace ORM.Attributes
         ///     а потом када работа непосредственно с коллекцией объектов закончилась, 
         ///         то она останется здесь, шобы не проебаться)
         /// </summary>
-        public ObservableCollection<object> CollectionToReference { get; set; }
+        public List<object> CollectionToReference { get; set; }
 
         /// <summary>
         /// </summary>
