@@ -59,5 +59,21 @@ namespace ORM.Objects
         {
             this.Attach(this.Row);
         }
+
+        public string GetCondition()
+        {
+            PropertyInfo primaryKeyProperty = this.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance).Where((info) =>
+            {
+                PrimaryKeyAttribute attr = info.GetCustomAttribute<PrimaryKeyAttribute>(true);
+                return attr == null;
+            }).Last();
+            string primaryKeyFieldName = primaryKeyProperty.GetCustomAttribute<FieldNameAttribute>(true).Name;
+
+            string res = primaryKeyFieldName + " = ";
+
+            res += primaryKeyProperty.PropertyType == typeof(string) ? string.Format("'{0}'", primaryKeyProperty.GetValue(this).ToString()) : primaryKeyProperty.GetValue(this).ToString();
+
+            return res;
+        }
     }
 }

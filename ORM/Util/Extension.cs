@@ -20,7 +20,7 @@ namespace ORM.Util
         /// а так как мне в падлу сейчас это делать, то сделаю потом :)
         /// 
         /// PыSы А не работать эта параша может из-за того, что зуй знает, 
-        /// правильно ли определится равенство объектов на 34 строке
+        /// правильно ли определится равенство объектов на 36 строке
         /// </summary>
         /// <returns></returns>
         public static bool RowsEquals(this DataRow row, DataRow otherRow)
@@ -35,22 +35,6 @@ namespace ORM.Util
             {
                 res &= row[i] == otherRow[i];
             }
-
-            return res;
-        }
-
-        public static string GetCondition(this DatabaseObject obj)
-        {
-            PropertyInfo primaryKeyProperty = obj.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance).Where((info) => 
-            {
-                PrimaryKeyAttribute attr = info.GetCustomAttribute<PrimaryKeyAttribute>(true);
-                return attr == null;
-            }).Last();
-            string primaryKeyFieldName = primaryKeyProperty.GetCustomAttribute<FieldNameAttribute>(true).Name;
-
-            string res = primaryKeyFieldName + " = ";
-
-            res += primaryKeyProperty.PropertyType == typeof(string) ? string.Format("'{0}'", primaryKeyProperty.GetValue(obj).ToString()) : primaryKeyProperty.GetValue(obj).ToString();
 
             return res;
         }
