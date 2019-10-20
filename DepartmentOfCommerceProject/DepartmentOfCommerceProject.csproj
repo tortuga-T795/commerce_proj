@@ -110,7 +110,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Content\Images\" />
     <Folder Include="Model\" />
   </ItemGroup>
   <ItemGroup>
@@ -118,6 +117,20 @@
       <Project>{a4affcfb-c616-48e5-b38f-9f2029771d05}</Project>
       <Name>ORM</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\catalog.png" />
+    <Resource Include="Resources\Images\customs.png" />
+    <Resource Include="Resources\Images\dashboard.png" />
+    <Resource Include="Resources\Images\priceList.png" />
+    <Resource Include="Resources\Images\purchase.png" />
+    <Resource Include="Resources\Images\retail.png" />
+    <Resource Include="Resources\Images\sale.png" />
+    <Resource Include="Resources\Images\stock.png" />
+    <Resource Include="Resources\Images\transport.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\dashboard.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
