@@ -15,24 +15,24 @@
         <TreeViewItem>
             <StackPanel Orientation="Horizontal">
                 <Image Margin="5" Source="{StaticResource open_folder_picture}" />
-                <TextBlock Text="Продажи" FontSize="10" VerticalAlignment="Center" />
+                <TextBlock Text="Продажи" FontSize="14" VerticalAlignment="Center" />
             </StackPanel>
             <TreeViewItem>
                 <StackPanel Orientation="Horizontal">
                     <Image Margin="5" Source="{StaticResource list_item_picture}" />
-                    <TextBlock Text="Выписка накладных" FontSize="10" VerticalAlignment="Center" />
+                    <TextBlock Text="Выписка накладных" FontSize="14" VerticalAlignment="Center" />
                 </StackPanel>
             </TreeViewItem>
         </TreeViewItem>
         <TreeViewItem>
             <StackPanel Orientation="Horizontal">
                 <Image Margin="5" Source="{StaticResource open_folder_picture}" />
-                <TextBlock Text="Розничная торговля" FontSize="10" VerticalAlignment="Center" />
+                <TextBlock Text="Розничная торговля" FontSize="14" VerticalAlignment="Center" />
             </StackPanel>
             <TreeViewItem>
                 <StackPanel Orientation="Horizontal">
                     <Image Margin="5" Source="{StaticResource list_item_picture}" />
-                    <TextBlock Text="Кассовые операции" FontSize="10" VerticalAlignment="Center" />
+                    <TextBlock Text="Кассовые операции" FontSize="14" VerticalAlignment="Center" />
                 </StackPanel>
             </TreeViewItem>
         </TreeViewItem>
