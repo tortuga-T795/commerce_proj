@@ -6,24 +6,71 @@
         xmlns:local="clr-namespace:DepartmentOfCommerceProject.View"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <BitmapImage  x:Key="dashboard_pickture" UriSource="/DepartmentOfCommerceProject;component/Resources/Images/dashboard.png" />
+        <BitmapImage  x:Key="catalog_pickture" UriSource="/DepartmentOfCommerceProject;component/Resources/Images/catalog.png" />
+        <BitmapImage  x:Key="customs_pickture" UriSource="/DepartmentOfCommerceProject;component/Resources/Images/customs.png" />
+        <BitmapImage  x:Key="priceList_pickture" UriSource="/DepartmentOfCommerceProject;component/Resources/Images/priceList.png" />
+        <BitmapImage  x:Key="purchase_pickture" UriSource="/DepartmentOfCommerceProject;component/Resources/Images/purchase.png" />
+        <BitmapImage  x:Key="retail_pickture" UriSource="/DepartmentOfCommerceProject;component/Resources/Images/retail.png" />
+        <BitmapImage  x:Key="sale_pickture" UriSource="/DepartmentOfCommerceProject;component/Resources/Images/sale.png" />
+        <BitmapImage  x:Key="stock_pickture" UriSource="/DepartmentOfCommerceProject;component/Resources/Images/stock.png" />
+        <BitmapImage  x:Key="transport_pickture" UriSource="/DepartmentOfCommerceProject;component/Resources/Images/transport.png" />
+    </Window.Resources>
     <StackPanel Orientation="Vertical">
-        <Grid HorizontalAlignment="Left" Height="39"  VerticalAlignment="Top" Width="517" Margin="-2,0,0,0">
-            <Button HorizontalAlignment="Left" Margin="4,0,0,0" VerticalAlignment="Top" Width="42" Height="36" Background="{x:Null}" BorderBrush="Black">
-                <Grid Height="32" Width="38">
-                    <Image Margin="0,0,0,6" Source="Content/Images/purchase.png"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="0,26,0,0" TextWrapping="Wrap" Text="Рабочий Стол" VerticalAlignment="Top" Height="6" Width="38" FontSize="5" TextAlignment="Center"/>
+        <Grid HorizontalAlignment="Left" MinHeight="50"  VerticalAlignment="Top" MinWidth="794" MaxHeight="1000" MaxWidth="1000" Margin="-2,0,0,0">
+            <Button HorizontalAlignment="Left" Margin="2,0,0,0" VerticalAlignment="Top" MinWidth="54" MinHeight="50" MaxWidth="100"  MaxHeight="100"  Background="{x:Null}" BorderBrush="Black" Height="22" Width="22">
+                <Grid MinHeight="42" MinWidth="50">
+                    <Image Margin="0,-1,0,14" Source="{StaticResource dashboard_pickture}"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="0,28,0,0" TextWrapping="Wrap" Text="Рабочий стол" VerticalAlignment="Top" MinHeight="14" MinWidth="50" FontSize="8" TextAlignment="Center"/>
                 </Grid>
             </Button>
-            <Button HorizontalAlignment="Left" Margin="50,0,0,0" VerticalAlignment="Top" Width="42" Height="36" Background="{x:Null}" BorderBrush="Black">
-                <Grid Height="32" Width="38">
-                    <Image Margin="0,0,0,6" Source="Content/Images/purchase.png" Height="25"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="0,26,0,0" TextWrapping="Wrap" Text="Справочники" VerticalAlignment="Top" Height="6" Width="38" FontSize="5" TextAlignment="Center"/>
+            <Button HorizontalAlignment="Left" Margin="61,0,0,0" VerticalAlignment="Top" Width="54" Height="50" Background="{x:Null}" BorderBrush="Black">
+                <Grid Height="42" Width="50">
+                    <Image Margin="0,-1,0,14" Source="{StaticResource catalog_pickture}"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="0,28,0,0" TextWrapping="Wrap" Text="Справочник" VerticalAlignment="Top" Height="14" Width="50" FontSize="8" TextAlignment="Center"/>
                 </Grid>
             </Button>
-            <Button HorizontalAlignment="Left" Margin="100,0,0,0" VerticalAlignment="Top" Width="42" Height="36" Background="{x:Null}" BorderBrush="Black">
-                <Grid Height="32" Width="38">
-                    <Image Margin="0,0,0,6" Source="Content/Images/purchase.png" Height="25"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="0,26,0,0" TextWrapping="Wrap" Text="Справочники" VerticalAlignment="Top" Height="6" Width="38" FontSize="5" TextAlignment="Center"/>
+            <Button HorizontalAlignment="Left" Margin="120,0,0,0" VerticalAlignment="Top" Width="54" Height="50" Background="{x:Null}" BorderBrush="Black">
+                <Grid Height="42" Width="50">
+                    <Image Margin="0,-1,0,14" Source="{StaticResource purchase_pickture}"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="0,28,0,0" TextWrapping="Wrap" Text="Закупки" VerticalAlignment="Top" Height="14" Width="50" FontSize="8" TextAlignment="Center"/>
+                </Grid>
+            </Button>
+            <Button HorizontalAlignment="Left" Margin="179,0,0,0" VerticalAlignment="Top" Width="54" Height="50" Background="{x:Null}" BorderBrush="Black">
+                <Grid Height="42" Width="50">
+                    <Image Margin="0,-1,0,14" Source="{StaticResource stock_pickture}"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="0,28,0,0" TextWrapping="Wrap" Text="Склад" VerticalAlignment="Top" Height="14" Width="50" FontSize="8" TextAlignment="Center"/>
+                </Grid>
+            </Button>
+            <Button HorizontalAlignment="Left" Margin="238,0,0,0" VerticalAlignment="Top" Width="54" Height="50" Background="{x:Null}" BorderBrush="Black">
+                <Grid Height="42" Width="50">
+                    <Image Margin="0,-1,0,14" Source="{StaticResource sale_pickture}"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="0,28,0,0" TextWrapping="Wrap" Text="Продажи" VerticalAlignment="Top" Height="14" Width="50" FontSize="8" TextAlignment="Center"/>
+                </Grid>
+            </Button>
+            <Button HorizontalAlignment="Left" Margin="297,0,0,0" VerticalAlignment="Top" Width="54" Height="50" Background="{x:Null}" BorderBrush="Black">
+                <Grid Height="46" Width="51">
+                    <Image Margin="0,-1,2,16" Source="{StaticResource retail_pickture}"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="0,28,0,-2" TextWrapping="Wrap" Text="Розничная торговля" VerticalAlignment="Top" Height="16" Width="50" FontSize="6" TextAlignment="Center"/>
+                </Grid>
+            </Button>
+            <Button HorizontalAlignment="Left" Margin="356,0,0,0" VerticalAlignment="Top" Width="54" Height="50" Background="{x:Null}" BorderBrush="Black">
+                <Grid Height="46" Width="51">
+                    <Image Margin="0,-1,2,16" Source="{StaticResource priceList_pickture}"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="0,28,0,-2" TextWrapping="Wrap" Text="Цены" VerticalAlignment="Top" Height="16" Width="50" FontSize="8" TextAlignment="Center"/>
+                </Grid>
+            </Button>
+            <Button HorizontalAlignment="Left" Margin="415,0,0,0" VerticalAlignment="Top" Width="54" Height="50" Background="{x:Null}" BorderBrush="Black">
+                <Grid Height="46" Width="51">
+                    <Image Margin="0,-1,2,16" Source="{StaticResource transport_pickture}"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="0,28,0,-2" TextWrapping="Wrap" Text="Транспорт" VerticalAlignment="Top" Height="16" Width="50" FontSize="8" TextAlignment="Center"/>
+                </Grid>
+            </Button>
+            <Button HorizontalAlignment="Left" Margin="474,0,0,0" VerticalAlignment="Top" Width="54" Height="50" Background="{x:Null}" BorderBrush="Black">
+                <Grid Height="46" Width="51">
+                    <Image Margin="0,-1,2,16" Source="{StaticResource customs_pickture}"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="0,28,0,-2" TextWrapping="Wrap" Text="ВЭД" VerticalAlignment="Top" Height="16" Width="50" FontSize="8" TextAlignment="Center"/>
                 </Grid>
             </Button>
         </Grid>
