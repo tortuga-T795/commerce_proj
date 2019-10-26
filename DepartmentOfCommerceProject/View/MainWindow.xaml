@@ -8,15 +8,15 @@
         Title="MainWindow" Height="650" Width="1000"
         MinWidth="800" MinHeight="400">
     <Window.Resources>
-        <BitmapImage  x:Key="dashboard_pickture" UriSource="/DepartmentOfCommerceProject;component/Resources/Images/dashboard.png" />
-        <BitmapImage  x:Key="catalog_pickture" UriSource="/DepartmentOfCommerceProject;component/Resources/Images/catalog.png" />
-        <BitmapImage  x:Key="customs_pickture" UriSource="/DepartmentOfCommerceProject;component/Resources/Images/customs.png" />
-        <BitmapImage  x:Key="priceList_pickture" UriSource="/DepartmentOfCommerceProject;component/Resources/Images/priceList.png" />
-        <BitmapImage  x:Key="purchase_pickture" UriSource="/DepartmentOfCommerceProject;component/Resources/Images/purchase.png" />
-        <BitmapImage  x:Key="retail_pickture" UriSource="/DepartmentOfCommerceProject;component/Resources/Images/retail.png" />
-        <BitmapImage  x:Key="sale_pickture" UriSource="/DepartmentOfCommerceProject;component/Resources/Images/sale.png" />
-        <BitmapImage  x:Key="stock_pickture" UriSource="/DepartmentOfCommerceProject;component/Resources/Images/stock.png" />
-        <BitmapImage  x:Key="transport_pickture" UriSource="/DepartmentOfCommerceProject;component/Resources/Images/transport.png" />
+        <BitmapImage x:Key="dashboard_pickture" UriSource="/DepartmentOfCommerceProject;component/Resources/Images/dashboard.png" />
+        <BitmapImage x:Key="catalog_pickture" UriSource="/DepartmentOfCommerceProject;component/Resources/Images/catalog.png" />
+        <BitmapImage x:Key="customs_pickture" UriSource="/DepartmentOfCommerceProject;component/Resources/Images/customs.png" />
+        <BitmapImage x:Key="priceList_pickture" UriSource="/DepartmentOfCommerceProject;component/Resources/Images/priceList.png" />
+        <BitmapImage x:Key="purchase_pickture" UriSource="/DepartmentOfCommerceProject;component/Resources/Images/purchase.png" />
+        <BitmapImage x:Key="retail_pickture" UriSource="/DepartmentOfCommerceProject;component/Resources/Images/retail.png" />
+        <BitmapImage x:Key="sale_pickture" UriSource="/DepartmentOfCommerceProject;component/Resources/Images/sale.png" />
+        <BitmapImage x:Key="stock_pickture" UriSource="/DepartmentOfCommerceProject;component/Resources/Images/stock.png" />
+        <BitmapImage x:Key="transport_pickture" UriSource="/DepartmentOfCommerceProject;component/Resources/Images/transport.png" />
     </Window.Resources>
     <StackPanel>
         <ItemsControl>
