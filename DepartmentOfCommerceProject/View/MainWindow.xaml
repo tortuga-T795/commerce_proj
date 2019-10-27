@@ -97,12 +97,6 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="4*" />
             </Grid.ColumnDefinitions>
-            <Frame Grid.Column="0" x:Name="listFrame" Source="DesktopListPage.xaml">
-                
-            </Frame>
-            <Frame Grid.Column="2" x:Name="mainFrame">
-                
-            </Frame>
         </Grid>
     </StackPanel>
 </Window>
