@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:DepartmentOfCommerceProject.View"
+        xmlns:local="clr-namespace:DepartmentOfCommerceProject.ViewModel"
         mc:Ignorable="d"
         Title="MainWindow" Height="650" Width="1200"
         MinWidth="800" MinHeight="400">
@@ -18,6 +18,9 @@
         <BitmapImage x:Key="stock_pickture" UriSource="/DepartmentOfCommerceProject;component/Resources/Images/stock.png" />
         <BitmapImage x:Key="transport_pickture" UriSource="/DepartmentOfCommerceProject;component/Resources/Images/transport.png" />
     </Window.Resources>
+    <Window.DataContext>
+        <local:MainWindowViewModel></local:MainWindowViewModel>
+    </Window.DataContext>
     <StackPanel>
         <ItemsControl>
             <ItemsControl.ItemContainerStyle>
@@ -33,7 +36,7 @@
             </ItemsControl.ItemsPanel>
 
             <ItemsControl.Items>
-                <Button Background="{x:Null}" BorderThickness="0">
+                <Button Background="{x:Null}" BorderThickness="0" Command="{Binding FillTreeView}" CommandParameter="{Binding pizdec}">
                     <StackPanel>
                         <Image Margin="7" Source="{StaticResource dashboard_pickture}"/>
                         <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3" TextWrapping="Wrap" Text="Рабочий стол" FontSize="12" TextAlignment="Center"/>
@@ -97,6 +100,16 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="4*" />
             </Grid.ColumnDefinitions>
+            <TreeView Grid.Column="0" ItemsSource="{Binding Path=TreeViewContent}">
+                <TreeView.ItemTemplate>
+                    <HierarchicalDataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=ItemText}" />
+                            <Image Source="{Binding Path=ItemImage}" Stretch="Uniform" />
+                        </StackPanel>
+                    </HierarchicalDataTemplate>
+                </TreeView.ItemTemplate>
+            </TreeView>
         </Grid>
     </StackPanel>
 </Window>

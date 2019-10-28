@@ -59,13 +59,12 @@
     <Compile Include="Infrastructure\BusinessObjects\DatabaseObjects\AccountInfo.cs" />
     <Compile Include="Infrastructure\BusinessObjects\DatabaseObjects\AccountType.cs" />
     <Compile Include="Infrastructure\BusinessObjects\LoginInfo.cs" />
+    <Compile Include="Infrastructure\BusinessObjects\TreeViewNode.cs" />
+    <Compile Include="Infrastructure\Commands\FillTreeViewCommand.cs" />
     <Compile Include="Infrastructure\Commands\LoginCommand.cs" />
     <Compile Include="ViewModel\LoginWindowViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
-    <Compile Include="View\DesktopListPage.xaml.cs">
-      <DependentUpon>DesktopListPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
@@ -77,10 +76,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Infrastructure\Crypto.cs" />
-    <Page Include="View\DesktopListPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
