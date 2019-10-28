@@ -37,7 +37,7 @@
             </ItemsControl.ItemsPanel>
 
             <ItemsControl.Items>
-                <Button Background="{x:Null}" BorderThickness="0" Command="{Binding FillTreeView}" >
+                <Button Background="{x:Null}" BorderThickness="0" Command="{Binding FillTreeViewCommand}" >
                     <!--CommandParameter="{Binding pizdec}"-->
                     <StackPanel>
                         <Image Margin="7" Source="{StaticResource dashboard_pickture}"/>
@@ -102,16 +102,18 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="4*" />
             </Grid.ColumnDefinitions>
-            <TreeView Grid.Column="0" ItemsSource="{Binding Path=TreeViewContent}">
-                <TreeView.ItemTemplate>
-                    <HierarchicalDataTemplate ItemsSource="{Binding Nodes}">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding Path=ItemText}" />
-                            <Image Source="{Binding Path=ItemImage}" Stretch="Uniform" />
-                        </StackPanel>
-                    </HierarchicalDataTemplate>
-                </TreeView.ItemTemplate>
-            </TreeView>
+            <ScrollViewer>
+                <TreeView Grid.Column="0" ItemsSource="{Binding Path=TreeViewContent}">
+                    <TreeView.ItemTemplate>
+                        <HierarchicalDataTemplate ItemsSource="{Binding Nodes}">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Path=ItemText}" />
+                                <Image Source="{Binding Path=ItemImage}" Stretch="Uniform" />
+                            </StackPanel>
+                        </HierarchicalDataTemplate>
+                    </TreeView.ItemTemplate>
+                </TreeView>
+            </ScrollViewer>
         </Grid>
     </StackPanel>
 </Window>

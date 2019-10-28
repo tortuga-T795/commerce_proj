@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using DepartmentOfCommerceProject.Infrastructure.BusinessObjects;
+﻿using DepartmentOfCommerceProject.Infrastructure.BusinessObjects;
 using DepartmentOfCommerceProject.Infrastructure.Commands;
+using System.Collections.Generic;
+using System.Windows.Input;
 
 namespace DepartmentOfCommerceProject.ViewModel
 {
-    public class MainWindowViewModel
+    public class MainWindowViewModel : ViewModelBase
     {
         public List<TreeViewNode> TreeViewContent { get; set; }
         private FillTreeViewCommand fillTreeViewCommand;
 
-        public ICommand FillTreeView
+        public ICommand FillTreeViewCommand
         {
             get
             {
