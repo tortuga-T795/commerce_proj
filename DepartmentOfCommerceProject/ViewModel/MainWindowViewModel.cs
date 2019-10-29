@@ -1,22 +1,36 @@
 ﻿using DepartmentOfCommerceProject.Infrastructure.BusinessObjects;
 using DepartmentOfCommerceProject.Infrastructure.Commands;
 using System.Collections.Generic;
-using System.Windows.Input;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media.Imaging;
 
 namespace DepartmentOfCommerceProject.ViewModel
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        public List<TreeViewNode> TreeViewContent { get; set; }
+        public ObservableCollection<TreeViewNode> TreeViewContent { get; set; }
         private FillTreeViewCommand fillTreeViewCommand;
+
+        private Dictionary<string, ObservableCollection<TreeViewNode>> TreeViewData = new Dictionary<string, ObservableCollection<TreeViewNode>>()
+        {
+            { "desktopButton", new ObservableCollection<TreeViewNode>()
+                {
+                    new TreeViewNode("pipidastr", IconType.folder, new ObservableCollection<TreeViewNode>()
+                    {
+                        new TreeViewNode("pipidastr1", IconType.item)
+                    })
+                }
+            }
+        };
 
         public ICommand FillTreeViewCommand
         {
             get
             {
-                if(fillTreeViewCommand == null)
+                if (fillTreeViewCommand == null)
                 {
                     fillTreeViewCommand = new FillTreeViewCommand(ExecuteFillTreeViewCommand);
                 }
@@ -35,7 +49,7 @@ namespace DepartmentOfCommerceProject.ViewModel
         private void ExecuteFillTreeViewCommand(object parm)
         {
             Button btn = parm as Button;
-            MessageBox.Show(btn.Name);
+            TreeViewContent = TreeViewData[btn.Name];
         }
     }
 }

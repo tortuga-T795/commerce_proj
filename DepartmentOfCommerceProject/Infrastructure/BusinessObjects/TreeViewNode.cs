@@ -1,18 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media.Imaging;
+﻿using System.Collections.ObjectModel;
 
 namespace DepartmentOfCommerceProject.Infrastructure.BusinessObjects
 {
+    public enum IconType
+    {
+        folder,
+        item
+    }
+
     public class TreeViewNode
     {
-        public string ItemText { get; set; }
+        public TreeViewNode(string itemText, IconType iconType, ObservableCollection<TreeViewNode> nodes = null)
+        {
+            this.ItemText = itemText;
+            this.IconType = iconType;
+            this.Nodes = nodes;
+        }
 
-        public BitmapImage ItemImage { get; set; }
+        public string ItemText { get; private set; }
 
-        public List<TreeViewNode> Nodes { get; set; }
+        public IconType IconType { get; private set; }
+
+        public ObservableCollection<TreeViewNode> Nodes { get; private set; }
     }
 }
