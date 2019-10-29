@@ -11,16 +11,22 @@ namespace DepartmentOfCommerceProject.ViewModel
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        public ObservableCollection<TreeViewNode> TreeViewContent { get; set; }
+        public ObservableCollection<TreeViewNode> TreeViewContent { get; private set; } = new ObservableCollection<TreeViewNode>()
+        {
+            new TreeViewNode("pipidastr", IconType.folder, new ObservableCollection<TreeViewNode>()
+            {
+                new TreeViewNode("pipidastr1", IconType.item)
+            })
+        };
         private FillTreeViewCommand fillTreeViewCommand;
 
         private Dictionary<string, ObservableCollection<TreeViewNode>> TreeViewData = new Dictionary<string, ObservableCollection<TreeViewNode>>()
         {
             { "desktopButton", new ObservableCollection<TreeViewNode>()
                 {
-                    new TreeViewNode("pipidastr", IconType.folder, new ObservableCollection<TreeViewNode>()
+                    new TreeViewNode("pipidastr2", IconType.folder, new ObservableCollection<TreeViewNode>()
                     {
-                        new TreeViewNode("pipidastr1", IconType.item)
+                        new TreeViewNode("pipidastr3", IconType.item)
                     })
                 }
             }
