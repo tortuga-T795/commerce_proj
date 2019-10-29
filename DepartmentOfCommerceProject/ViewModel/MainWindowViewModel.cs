@@ -2,6 +2,8 @@
 using DepartmentOfCommerceProject.Infrastructure.Commands;
 using System.Collections.Generic;
 using System.Windows.Input;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace DepartmentOfCommerceProject.ViewModel
 {
@@ -16,10 +18,24 @@ namespace DepartmentOfCommerceProject.ViewModel
             {
                 if(fillTreeViewCommand == null)
                 {
-                    fillTreeViewCommand = new FillTreeViewCommand();
+                    fillTreeViewCommand = new FillTreeViewCommand(ExecuteFillTreeViewCommand);
                 }
                 return fillTreeViewCommand;
             }
+        }
+
+        public ICommand SelectTreeViewItemCommand
+        {
+            get
+            {
+                return null;
+            }
+        }
+
+        private void ExecuteFillTreeViewCommand(object parm)
+        {
+            Button btn = parm as Button;
+            MessageBox.Show(btn.Name);
         }
     }
 }

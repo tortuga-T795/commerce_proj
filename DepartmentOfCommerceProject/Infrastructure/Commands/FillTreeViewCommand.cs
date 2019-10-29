@@ -31,7 +31,7 @@ namespace DepartmentOfCommerceProject.Infrastructure.Commands
 
         public void Execute(object parameter)
         {
-            MessageBox.Show(parameter.GetType().ToString());
+            execute.Invoke(parameter);
         }
     }
 }
