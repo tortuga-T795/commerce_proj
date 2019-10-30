@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DepartmentOfCommerceProject.ViewModel"
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
-        xmlns:my="clr-namespace:DepartmentOfCommerceProject.Infrastructure.BusinessObjects"
+        xmlns:my="clr-namespace:DepartmentOfCommerceProject.Infrastructure.BusinessObjects;assembly=DepartmentOfCommerceProject"
         mc:Ignorable="d"
         Title="MainWindow" Height="650" Width="1200"
         MinWidth="800" MinHeight="400">
@@ -110,24 +110,24 @@
                 <TreeView Grid.Column="0" ItemsSource="{Binding Path=TreeViewContent}">
                     <TreeView.ItemTemplate>
                         <HierarchicalDataTemplate ItemsSource="{Binding Nodes}">
-                            <Button Command="{Binding SelectTreeViewItemCommand}" CommandParameter="{Binding}">
+                            <Button Command="{Binding SelectTreeViewItemCommand}" CommandParameter="{Binding}" Background="{x:Null}">
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding Path=ItemText}" />
-                                    <Image Stretch="Uniform">
+                                    <Image Margin="2">
                                         <!--  Source="{Binding Path=IconType}" -->
                                         <Image.Style>
                                             <Style TargetType="{x:Type Image}">
                                                 <Style.Triggers>
-                                                    <DataTrigger Binding="{Binding IconType}" Value="IconType.folder">
+                                                    <DataTrigger Binding="{Binding IconType}" Value="{x:Static my:IconType.folder}">
                                                         <Setter Property="Source" Value="{StaticResource folder_picture}" />
                                                     </DataTrigger>
-                                                    <DataTrigger Binding="{Binding IconType}" Value="IconType.item">
+                                                    <DataTrigger Binding="{Binding IconType}" Value="{x:Static my:IconType.item}">
                                                         <Setter Property="Source" Value="{StaticResource list_item_picture}" />
                                                     </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </Image.Style>
                                     </Image>
+                                    <TextBlock Text="{Binding Path=ItemText}" Margin="2" />
                                 </StackPanel>
                             </Button>
                         </HierarchicalDataTemplate>
