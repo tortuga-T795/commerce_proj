@@ -102,6 +102,7 @@ namespace DepartmentOfCommerceProject.ViewModel
         {
             Button btn = parm as Button;
             TreeViewContent = TreeViewData[btn.Name];
+            OnProperyChanged("TreeViewContent");
         }
     }
 }
