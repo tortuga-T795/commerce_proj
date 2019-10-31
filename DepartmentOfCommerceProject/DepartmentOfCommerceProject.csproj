@@ -65,6 +65,7 @@
     <Compile Include="Infrastructure\BusinessObjects\TreeViewNode.cs" />
     <Compile Include="Infrastructure\Commands\FillTreeViewCommand.cs" />
     <Compile Include="Infrastructure\Commands\LoginCommand.cs" />
+    <Compile Include="Infrastructure\TreeViewData.cs" />
     <Compile Include="ViewModel\LoginWindowViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
