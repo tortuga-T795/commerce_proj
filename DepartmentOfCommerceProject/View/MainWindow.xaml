@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DepartmentOfCommerceProject.ViewModel"
-        xmlns:my="clr-namespace:DepartmentOfCommerceProject.Infrastructure.BusinessObjects;assembly=DepartmentOfCommerceProject"
+        xmlns:BusinessObjects="clr-namespace:DepartmentOfCommerceProject.Infrastructure.BusinessObjects;assembly=DepartmentOfCommerceProject"
         mc:Ignorable="d"
         Title="MainWindow" Height="650" Width="1200"
         MinWidth="800" MinHeight="400">
@@ -117,10 +117,10 @@
                                         <Image.Style>
                                             <Style TargetType="{x:Type Image}">
                                                 <Style.Triggers>
-                                                    <DataTrigger Binding="{Binding IconType}" Value="{x:Static my:IconType.folder}">
+                                                    <DataTrigger Binding="{Binding IconType}" Value="{x:Static BusinessObjects:IconType.folder}">
                                                         <Setter Property="Source" Value="{StaticResource folder_picture}" />
                                                     </DataTrigger>
-                                                    <DataTrigger Binding="{Binding IconType}" Value="{x:Static my:IconType.item}">
+                                                    <DataTrigger Binding="{Binding IconType}" Value="{x:Static BusinessObjects:IconType.item}">
                                                         <Setter Property="Source" Value="{StaticResource list_item_picture}" />
                                                     </DataTrigger>
                                                 </Style.Triggers>
