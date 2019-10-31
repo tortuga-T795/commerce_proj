@@ -63,6 +63,7 @@ namespace DepartmentOfCommerceProject.ViewModel
         //            })
         //};
         private FillTreeViewCommand fillTreeViewCommand;
+        private SelectTreeViewItemCommand selectTreeViewItemCommand;
 
         public ICommand FillTreeViewCommand
         {
@@ -80,7 +81,14 @@ namespace DepartmentOfCommerceProject.ViewModel
         {
             get
             {
-                return null;
+                if(selectTreeViewItemCommand == null)
+                {
+                    selectTreeViewItemCommand = new SelectTreeViewItemCommand((object obj) =>
+                    {
+                        System.Windows.MessageBox.Show(obj.ToString());
+                    });
+                }
+                return selectTreeViewItemCommand;
             }
         }
 

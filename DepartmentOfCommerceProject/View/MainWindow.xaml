@@ -42,7 +42,6 @@
 
             <ItemsControl.Items>
                 <Button x:Name="desktopButton" Background="{x:Null}" BorderThickness="0" Command="{Binding FillTreeViewCommand}" CommandParameter="{Binding ElementName=desktopButton}">
-                    <!--CommandParameter="{Binding pizdec}"-->
                     <StackPanel>
                         <Image Margin="7" Source="{StaticResource dashboard_pickture}"/>
                         <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3" TextWrapping="Wrap" Text="Рабочий стол" FontSize="12" TextAlignment="Center"/>
@@ -109,17 +108,17 @@
             <ScrollViewer>
                 <TreeView Grid.Column="0" ItemsSource="{Binding Path=TreeViewContent}">
                     <TreeView.ItemTemplate>
-                        <HierarchicalDataTemplate ItemsSource="{Binding Nodes}" DataType="{x:Type BusinessObjects:TreeViewNode}">
-                            <Button Command="{Binding SelectTreeViewItemCommand}" CommandParameter="{Binding}" Background="{x:Null}">
+                        <HierarchicalDataTemplate ItemsSource="{Binding Path=Nodes}" DataType="{x:Type BusinessObjects:TreeViewNode}">
+                            <Button Command="{Binding Path=SelectTreeViewItemCommand}" CommandParameter="{Binding Path=CommandParameter}" Background="{x:Null}">
                                 <StackPanel Orientation="Horizontal">
                                     <Image Margin="2">
                                         <Image.Style>
                                             <Style TargetType="{x:Type Image}">
                                                 <Style.Triggers>
-                                                    <DataTrigger Binding="{Binding IconType}" Value="{x:Static BusinessObjects:IconType.folder}">
+                                                    <DataTrigger Binding="{Binding Path=IconType}" Value="{x:Static BusinessObjects:IconType.folder}">
                                                         <Setter Property="Source" Value="{StaticResource folder_picture}" />
                                                     </DataTrigger>
-                                                    <DataTrigger Binding="{Binding IconType}" Value="{x:Static BusinessObjects:IconType.item}">
+                                                    <DataTrigger Binding="{Binding Path=IconType}" Value="{x:Static BusinessObjects:IconType.item}">
                                                         <Setter Property="Source" Value="{StaticResource list_item_picture}" />
                                                     </DataTrigger>
                                                 </Style.Triggers>
