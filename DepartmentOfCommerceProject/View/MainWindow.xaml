@@ -48,19 +48,19 @@
                         <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3" TextWrapping="Wrap" Text="Рабочий стол" FontSize="12" TextAlignment="Center"/>
                     </StackPanel>
                 </Button>
-                <Button x:Name="directoryButton" Background="{x:Null}" BorderThickness="0">
+                <Button x:Name="directoryButton" Background="{x:Null}" BorderThickness="0" Command="{Binding FillTreeViewCommand}" CommandParameter="{Binding ElementName=directoryButton}">
                     <StackPanel>
                         <Image Margin="7" Source="{StaticResource catalog_pickture}"/>
                         <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="7" TextWrapping="Wrap" Text="Справочник" FontSize="12" TextAlignment="Center"/>
                     </StackPanel>
                 </Button>
-                <Button x:Name="procurementButton" Background="{x:Null}" BorderThickness="0">
+                <Button x:Name="procurementButton" Background="{x:Null}" BorderThickness="0" Command="{Binding FillTreeViewCommand}" CommandParameter="{Binding ElementName=procurementButton}">
                     <StackPanel>
                         <Image Margin="7" Source="{StaticResource purchase_pickture}"/>
                         <TextBlock Margin="7" TextWrapping="Wrap" Text="Закупки" FontSize="12" TextAlignment="Center"/>
                     </StackPanel>
                 </Button>
-                <Button x:Name="Stock" Background="{x:Null}" BorderThickness="0">
+                <Button x:Name="stockButton" Background="{x:Null}" BorderThickness="0" Command="{Binding FillTreeViewCommand}" CommandParameter="{Binding ElementName=stockButton}">
                     <StackPanel>
                         <Image Margin="7" Source="{StaticResource stock_pickture}"/>
                         <TextBlock Margin="7" TextWrapping="Wrap" Text="Склад" FontSize="12" TextAlignment="Center"/>

@@ -10,7 +10,7 @@ namespace DepartmentOfCommerceProject.Infrastructure
 {
     static class TreeViewData
     {
-        public static Dictionary<string, ObservableCollection<TreeViewNode>> Data { get; private set; } = new Dictionary<string, ObservableCollection<TreeViewNode>>()
+        public static Dictionary<string, ObservableCollection<TreeViewNode>> Data { get; set; } = new Dictionary<string, ObservableCollection<TreeViewNode>>()
         {
             { "desktopButton", new ObservableCollection<TreeViewNode>()
                 {
