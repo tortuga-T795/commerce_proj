@@ -25,7 +25,7 @@ namespace DepartmentOfCommerceProject.Infrastructure.BusinessObjects
 
         public string ItemText { get; private set; }
 
-        public string CommandParameter { get; private set; } = "";
+        public string CommandParameter { get; private set; }
 
         public IconType IconType { get; private set; }
 
