@@ -13,6 +13,7 @@ namespace DepartmentOfCommerceProject.Infrastructure.Commands
         public event EventHandler CanExecuteChanged;
 
         private Action<object> execute;
+        private List<string> ignoreList;
 
         public SelectTreeViewItemCommand(Action<object> execute = null)
         {
@@ -21,11 +22,17 @@ namespace DepartmentOfCommerceProject.Infrastructure.Commands
 
         public bool CanExecute(object parameter)
         {
+            //string prm = parameter as string;
+            //return prm.Substring(0, )
             return true;
         }
 
         public void Execute(object parameter)
         {
+            if((parameter as string).Equals("f"))
+            {
+                return;
+            }
             execute.Invoke(parameter);
         }
     }

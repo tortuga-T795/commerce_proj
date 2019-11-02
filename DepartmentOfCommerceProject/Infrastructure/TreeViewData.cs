@@ -17,43 +17,46 @@ namespace DepartmentOfCommerceProject.Infrastructure
                     new TreeViewNode("Продажи", IconType.folder, new ObservableCollection<TreeViewNode>()
                     {
                         new TreeViewNode("Выписка накладных", IconType.item)
+                        {
+                            CommandParameter = "statementsOfWaybills"
+                        }
                     }),
                  new TreeViewNode("Розничная торговля", IconType.folder, new ObservableCollection<TreeViewNode>()
                     {
-                        new TreeViewNode("Кассовые операции", IconType.item),
-                        new TreeViewNode("POS", IconType.item),
-                        new TreeViewNode("Печать ценников ТСД", IconType.item),
-                        new TreeViewNode("Обработка Z-отчетов", IconType.item),
-                        new TreeViewNode("Переоценка", IconType.item),
-                        new TreeViewNode("Подарочные сертификаты", IconType.item),
-                        new TreeViewNode("Выписка подарочных сертификатов", IconType.item)
+                        new TreeViewNode("Кассовые операции", IconType.item) { CommandParameter = "cashboxOperations" },
+                        new TreeViewNode("POS", IconType.item) { CommandParameter = "POS" },
+                        new TreeViewNode("Печать ценников ТСД", IconType.item) { CommandParameter = "priceTagPrint" },
+                        new TreeViewNode("Обработка Z-отчетов", IconType.item) { CommandParameter = "zPeportsProcessing" },
+                        new TreeViewNode("Переоценка", IconType.item) { CommandParameter = "reassessment" },
+                        new TreeViewNode("Подарочные сертификаты", IconType.item) { CommandParameter = "giftCertificates" },
+                        new TreeViewNode("Выписка подарочных сертификатов", IconType.item) { CommandParameter = "issuingGiftCertificates" }
                     }),
                  new TreeViewNode("Закупка", IconType.folder, new ObservableCollection<TreeViewNode>()
                     {
-                        new TreeViewNode("Заказы по потребностям", IconType.item),
-                        new TreeViewNode("Графики заказов", IconType.item),
-                        new TreeViewNode("Заказы по графику", IconType.item),
-                        new TreeViewNode("Приемка по заказам", IconType.item),
-                        new TreeViewNode("Обновление розничных цен", IconType.item)
+                        new TreeViewNode("Заказы по потребностям", IconType.item) { CommandParameter = "requirementsOrders" },
+                        new TreeViewNode("Графики заказов", IconType.item) { CommandParameter = "orderCharts" },
+                        new TreeViewNode("Заказы по графику", IconType.item) { CommandParameter = "scheduledOrders" },
+                        new TreeViewNode("Приемка по заказам", IconType.item) { CommandParameter = "orderAcceptance" },
+                        new TreeViewNode("Обновление розничных цен", IconType.item) { CommandParameter = "retailPriceUpdate" }
                     }),
                  new TreeViewNode("Цены", IconType.folder, new ObservableCollection<TreeViewNode>()
                     {
-                        new TreeViewNode("Управление ценами", IconType.item),
-                        new TreeViewNode("Текущие цены", IconType.item),
-                        new TreeViewNode("Розничные цены", IconType.item)
+                        new TreeViewNode("Управление ценами", IconType.item) { CommandParameter = "priceManagement" },
+                        new TreeViewNode("Текущие цены", IconType.item) { CommandParameter = "currentPrices" },
+                        new TreeViewNode("Розничные цены", IconType.item) { CommandParameter = "retailPrices" }
                     }),
                   new TreeViewNode("Задолженности", IconType.folder, new ObservableCollection<TreeViewNode>()
                     {
-                        new TreeViewNode("Управление задолженностями", IconType.item),
-                        new TreeViewNode("Разнесение документов", IconType.item),
-                        new TreeViewNode("Неоплаченные документы", IconType.item)
+                        new TreeViewNode("Управление задолженностями", IconType.item) { CommandParameter = "debtManagement" },
+                        new TreeViewNode("Разнесение документов", IconType.item) { CommandParameter = "spacingDocuments" },
+                        new TreeViewNode("Неоплаченные документы", IconType.item) { CommandParameter = "notPayedDocuments" }
                     }),
                    new TreeViewNode("Маркетинг", IconType.folder, new ObservableCollection<TreeViewNode>()
                     {
-                        new TreeViewNode("Договоры маркетинга", IconType.item),
-                        new TreeViewNode("Акты на оплату", IconType.item),
-                        new TreeViewNode("Группы складов", IconType.item),
-                        new TreeViewNode("Шаблоны", IconType.item)
+                        new TreeViewNode("Договоры маркетинга", IconType.item) { CommandParameter = "marketingContracts" },
+                        new TreeViewNode("Акты на оплату", IconType.item) { CommandParameter = "actsOfPayment" },
+                        new TreeViewNode("Группы складов", IconType.item) { CommandParameter = "warehouseGroups" },
+                        new TreeViewNode("Шаблоны", IconType.item) { CommandParameter = "patterns" }
                     }),
                    new TreeViewNode("Производство", IconType.folder, new ObservableCollection<TreeViewNode>()
                     {
