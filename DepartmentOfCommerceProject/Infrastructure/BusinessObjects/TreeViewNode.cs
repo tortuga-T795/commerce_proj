@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
+using DepartmentOfCommerceProject.ViewModel;
 
 namespace DepartmentOfCommerceProject.Infrastructure.BusinessObjects
 {
@@ -30,5 +32,18 @@ namespace DepartmentOfCommerceProject.Infrastructure.BusinessObjects
         public IconType IconType { get; private set; }
 
         public ObservableCollection<TreeViewNode> Nodes { get; private set; }
+
+        /// <summary>
+        /// КАСТЫЫЫЫЫЫЫЛЬ
+        /// Логика сия говна такова: в MainWindowViewModel валяется команда, но биндингом её не видно в элементе
+        /// TreeView, из-за того, что они байндят эти объеты и команды из ViewModel не видно
+        /// </summary>
+        public ICommand Command
+        {
+            get
+            {
+                return MainWindowViewModel.SelectTreeViewItemCommand;
+            }
+        }
     }
 }

@@ -13,7 +13,7 @@ namespace DepartmentOfCommerceProject.ViewModel
         public ObservableCollection<TreeViewNode> TreeViewContent { get; private set; }
 
         private FillTreeViewCommand fillTreeViewCommand;
-        private SelectTreeViewItemCommand selectTreeViewItemCommand;
+        private static SelectTreeViewItemCommand selectTreeViewItemCommand;
 
         public ICommand FillTreeViewCommand
         {
@@ -27,7 +27,7 @@ namespace DepartmentOfCommerceProject.ViewModel
             }
         }
 
-        public ICommand SelectTreeViewItemCommand
+        public static ICommand SelectTreeViewItemCommand
         {
             get
             {
