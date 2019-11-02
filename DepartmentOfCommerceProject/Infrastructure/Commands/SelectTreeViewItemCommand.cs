@@ -10,10 +10,19 @@ namespace DepartmentOfCommerceProject.Infrastructure.Commands
 {
     class SelectTreeViewItemCommand : ICommand
     {
-        public event EventHandler CanExecuteChanged;
+        public event EventHandler CanExecuteChanged
+        {
+            add
+            {
+                CommandManager.RequerySuggested += value;
+            }
+            remove
+            {
+                CommandManager.RequerySuggested -= value;
+            }
+        }
 
         private Action<object> execute;
-        private List<string> ignoreList;
 
         public SelectTreeViewItemCommand(Action<object> execute = null)
         {
@@ -22,8 +31,6 @@ namespace DepartmentOfCommerceProject.Infrastructure.Commands
 
         public bool CanExecute(object parameter)
         {
-            //string prm = parameter as string;
-            //return prm.Substring(0, )
             return true;
         }
 
