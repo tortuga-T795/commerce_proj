@@ -1,8 +1,9 @@
-﻿using DepartmentOfCommerceProject.Infrastructure.BusinessObjects;
+﻿using DepartmentOfCommerceProject.Infrastructure;
+using DepartmentOfCommerceProject.Infrastructure.BusinessObjects;
 using DepartmentOfCommerceProject.Infrastructure.Commands;
-using DepartmentOfCommerceProject.Infrastructure;
 using System;
 using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -10,10 +11,29 @@ namespace DepartmentOfCommerceProject.ViewModel
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        public ObservableCollection<TreeViewNode> TreeViewContent { get; private set; }
-
+        private ObservableCollection<TreeViewNode> treeViewContent;
         private FillTreeViewCommand fillTreeViewCommand;
         private static SelectTreeViewItemCommand selectTreeViewItemCommand;
+
+        // было изменено на обычное свойство из-за того, что лучше чтобы метод
+        // OnProperyChanged вызывался именно тут, потому что в xaml, который в теории тоже может изменить 
+        // значение свойства, нельзя просто так взять и вызвать метод из экземплята, так что теперь тут обычное свойство
+        public ObservableCollection<TreeViewNode> TreeViewContent
+        {
+            get
+            {
+                if(treeViewContent == null)
+                {
+                    treeViewContent = new ObservableCollection<TreeViewNode>();
+                }
+                return treeViewContent;
+            }
+            set
+            {
+                treeViewContent = value;
+                OnProperyChanged("TreeViewContent");
+            }
+        }
 
         public ICommand FillTreeViewCommand
         {
@@ -35,7 +55,7 @@ namespace DepartmentOfCommerceProject.ViewModel
                 {
                     selectTreeViewItemCommand = new SelectTreeViewItemCommand((object obj) =>
                     {
-                        System.Windows.MessageBox.Show(obj.ToString());
+                        MessageBox.Show(obj.ToString());
                     });
                 }
                 return selectTreeViewItemCommand;
@@ -52,9 +72,8 @@ namespace DepartmentOfCommerceProject.ViewModel
             }
             catch (Exception ex)
             {
-                System.Windows.MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            OnProperyChanged("TreeViewContent");
         }
     }
 }
