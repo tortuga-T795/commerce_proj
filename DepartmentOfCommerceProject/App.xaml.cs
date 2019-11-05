@@ -14,7 +14,6 @@ namespace DepartmentOfCommerceProject
     /// </summary>
     public partial class App : Application
     {
-        private static string connectionString = "";
-        public static DatabaseManager DBManager { get; } = new DatabaseManager(connectionString);
+        public static DatabaseManager DBManager { get; } = DatabaseManager.Instance;
     }
 }

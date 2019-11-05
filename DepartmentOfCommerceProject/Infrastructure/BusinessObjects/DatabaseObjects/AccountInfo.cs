@@ -1,6 +1,7 @@
 ﻿using System;
 using ORM.Objects;
 using ORM.Attributes;
+using DepartmentOfCommerceProject.Repositories;
 
 namespace DepartmentOfCommerceProject.Infrastructure.BusinessObjects.DatabaseObjects
 {
@@ -21,7 +22,7 @@ namespace DepartmentOfCommerceProject.Infrastructure.BusinessObjects.DatabaseObj
         public string Surname { get; private set; }
 
         [FieldName("accType")]
-        [ForeignKey(typeof(AccountType), "Id", "TypeName")]
+        [ForeignKey(typeof(AccountTypesRepository), typeof(AccountType), "Id", "TypeName")]
         public int AccountType { get; private set; }
     }
 }

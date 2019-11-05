@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Reflection;
 using System.Collections.Generic;
+using ORM.Repositories;
+using ORM.Objects;
 
 namespace ORM.Attributes
 {
@@ -10,6 +12,9 @@ namespace ORM.Attributes
         public Type ReferencesType { get; private set; }
         public PropertyInfo ReferencesProperty { get; private set; }
         public PropertyInfo PrintProperty { get; private set; }
+        public Type RepositoryType { get; private set; }
+        // было не object, а IRepository<DatabaseObject>, просто заебало колупаться
+        public PropertyInfo RepositoryInstanceProperty { get; private set; }
 
         /// <summary>
         /// Сие чудо костыльного образа мышления должно работать так:
@@ -26,8 +31,10 @@ namespace ORM.Attributes
         /// <param name="refType">Type to reference</param>
         /// <param name="propName">Name of the property to be referenced</param>
         /// <param name="printPropName">Name of the property to be printed when data is displayed</param>
-        public ForeignKeyAttribute(Type refType, string propName, string printPropName)
+        public ForeignKeyAttribute(Type repoType, Type refType, string propName, string printPropName)
         {
+            RepositoryType = repoType;
+            RepositoryInstanceProperty = repoType.GetProperty("Instance", BindingFlags.Public | BindingFlags.Static);
             ReferencesType = refType;
             ReferencesProperty = ReferencesType.GetProperty(propName);
             PrintProperty = ReferencesType.GetProperty(printPropName);

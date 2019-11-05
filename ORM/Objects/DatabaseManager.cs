@@ -1,19 +1,45 @@
-﻿using ORM.Util;
+﻿using ORM.Repositories;
+using ORM.Util;
 using System.Data;
 using System.Data.SqlClient;
+using System.Configuration;
+using System;
 
 namespace ORM.Objects
 {
     public class DatabaseManager
     {
+        #region Singleton
+        private static readonly object lockObj = new object();
+        private static DatabaseManager instance;
+
+        [Obsolete]
+        public static DatabaseManager Instance
+        {
+            get
+            {
+                lock (lockObj)
+                {
+                    if (instance == null)
+                    {
+                        instance = new DatabaseManager();
+                    }
+                    return instance;
+                }
+            }
+        }
+        #endregion
+
         private string ConnectionString { get; set; }
 
-        public DatabaseManager(string connectionString)
+        [Obsolete]
+        public DatabaseManager()
         {
-            this.ConnectionString = connectionString;
+            ConnectionString = ConfigurationSettings.AppSettings.Get("mainDbConnectionString");
         }
 
-        public DatabaseData<T> GetData<T>() where T : DatabaseObject, new()
+        // DatabaseData<T>
+        public void GetData<T, RepoType>(RepoType repo) where T : DatabaseObject, new() where RepoType : IRepository<T>
         {
             string tableName = typeof(T).GetTableName();
             string query = "SELECT * FROM " + tableName;
@@ -32,7 +58,7 @@ namespace ORM.Objects
                 connection.Close();
             }
 
-            return new DatabaseData<T>(dataSet);
+            repo.Data = new DatabaseData<T>(dataSet);
         }
 
         public void Commit<T>(DatabaseData<T> data) where T : DatabaseObject, new()

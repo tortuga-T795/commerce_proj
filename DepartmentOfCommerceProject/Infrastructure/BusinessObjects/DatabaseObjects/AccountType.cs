@@ -5,6 +5,7 @@ using ORM.Attributes;
 namespace DepartmentOfCommerceProject.Infrastructure.BusinessObjects.DatabaseObjects
 {
     [TableName("AccountTypes")]
+    [ReadOnlyTable]
     public class AccountType : DatabaseObject
     {
         [PrimaryKey]

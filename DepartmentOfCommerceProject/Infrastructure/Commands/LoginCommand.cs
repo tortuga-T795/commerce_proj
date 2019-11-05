@@ -5,12 +5,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using DepartmentOfCommerceProject.Infrastructure.BusinessObjects;
+using DepartmentOfCommerceProject.Infrastructure.BusinessObjects.DatabaseObjects;
+using DepartmentOfCommerceProject.Repositories;
+using ORM.Objects;
 
 namespace DepartmentOfCommerceProject.Infrastructure
 {
     public class LoginCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
+
+        [Obsolete]
+        public LoginCommand()
+        {
+            DatabaseManager.Instance.GetData<AccountType, AccountTypesRepository>(AccountTypesRepository.Instance);
+        }
 
         public bool CanExecute(object parameter)
         {
@@ -31,7 +40,7 @@ namespace DepartmentOfCommerceProject.Infrastructure
                 throw new ArgumentException("parameter must be LoginInfo", "parameter");
             }
 
-
+            
         }
     }
 }
