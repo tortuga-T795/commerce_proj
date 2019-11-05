@@ -47,6 +47,7 @@
     <Compile Include="Attributes\ForeignTableAttribute.cs" />
     <Compile Include="Attributes\IAttribute.cs" />
     <Compile Include="Attributes\PrimaryKeyAttribute.cs" />
+    <Compile Include="Attributes\ReadOnlyTableAttribute.cs" />
     <Compile Include="Attributes\TableNameAttribute.cs" />
     <Compile Include="Exceptions\HaventPrimaryKeyException.cs" />
     <Compile Include="Exceptions\IncorrectTypeException.cs" />
