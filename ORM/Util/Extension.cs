@@ -12,6 +12,12 @@ namespace ORM.Util
         public static string GetTableName(this Type type)
         {
             TableNameAttribute attribute = type.GetCustomAttribute<TableNameAttribute>(true);
+
+            if(attribute == null)
+            {
+                return null;
+            }
+
             return attribute.Name;
         }
 
@@ -37,6 +43,18 @@ namespace ORM.Util
             }
 
             return res;
+        }
+
+        public static string GetFieldName(this PropertyInfo propInfo)
+        {
+            FieldNameAttribute attr = propInfo.GetCustomAttribute<FieldNameAttribute>();
+
+            if(attr == null)
+            {
+                return null;
+            }
+
+            return attr.Name;
         }
     }
 }

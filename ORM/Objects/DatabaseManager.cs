@@ -4,10 +4,11 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 using System;
+using System.Reflection;
 
 namespace ORM.Objects
 {
-    public class DatabaseManager
+    public sealed class DatabaseManager
     {
         #region Singleton
         private static readonly object lockObj = new object();
@@ -59,6 +60,19 @@ namespace ORM.Objects
             }
 
             repo.Data = new DatabaseData<T>(dataSet);
+        }
+
+        /// <summary>
+        /// Selected data from table by equals of conditionProp property
+        /// </summary>
+        /// <typeparam name="T">Needed DatabaseObject</typeparam>
+        /// <param name="conditionProp">Property to create SELECT condition</param>
+        public DatabaseData<T> GetData<T>(PropertyInfo conditionProp) where T : DatabaseObject, new()
+        {
+            string tableName = typeof(T).GetTableName();
+            string query = "SELECT * FROM ";
+
+            return null;
         }
 
         public void Commit<T>(DatabaseData<T> data) where T : DatabaseObject, new()
