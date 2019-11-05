@@ -70,7 +70,18 @@ namespace ORM.Objects
         public DatabaseData<T> GetData<T>(PropertyInfo conditionProp) where T : DatabaseObject, new()
         {
             string tableName = typeof(T).GetTableName();
-            string query = "SELECT * FROM ";
+            string fieldName = conditionProp.GetFieldName();
+
+            if (tableName == null)
+            {
+                throw new ArgumentNullException("tableName");
+            }
+            else if (fieldName == null)
+            {
+                throw new ArgumentNullException("fieldName");
+            }
+
+            string query = "SELECT * FROM " + tableName + " WHERE " + fieldName + " = ";
 
             return null;
         }

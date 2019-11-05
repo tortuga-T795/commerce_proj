@@ -45,6 +45,11 @@ namespace ORM.Util
             return res;
         }
 
+        /// <summary>
+        /// Getting field name from DatabaseObject property
+        /// </summary>
+        /// <param name="propInfo"></param>
+        /// <returns></returns>
         public static string GetFieldName(this PropertyInfo propInfo)
         {
             FieldNameAttribute attr = propInfo.GetCustomAttribute<FieldNameAttribute>();
@@ -55,6 +60,16 @@ namespace ORM.Util
             }
 
             return attr.Name;
+        }
+
+        public static string GetValidToConditionFieldValue(this PropertyInfo propInfo, object obj)
+        {
+            if(propInfo.PropertyType == typeof(string))
+            {
+                return "'" + propInfo.GetValue(obj, null).ToString() + "'";
+            }
+
+            return null;
         }
     }
 }
