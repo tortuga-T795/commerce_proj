@@ -3,7 +3,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ORM.Util;
 using ORM.Objects;
 using ORM.Attributes;
-using System.Reflection;
 using System.Collections.Generic;
 
 namespace Tests
@@ -18,7 +17,7 @@ namespace Tests
     }
 
     [TestClass]
-    public class UnitTest1
+    public class TestConditions
     {
         [TestMethod]
         public void TestDatabaseDataSelectCondition()
