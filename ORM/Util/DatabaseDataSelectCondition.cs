@@ -30,7 +30,24 @@ namespace ORM.Util
             FieldNameAttribute fieldNameAttr = Property.GetCustomAttribute<FieldNameAttribute>();
             string fieldName = fieldNameAttr.Name;
 
-            return fieldName + " = " + Value.GetValidToConditionValue();
+            string conditionSign = "";
+            switch (ComparisonType)
+            {
+                case ComparisonType.More:
+                    conditionSign = " > ";
+                    break;
+                case ComparisonType.Less:
+                    conditionSign = " < ";
+                    break;
+                case ComparisonType.Equal:
+                    conditionSign = " = ";
+                    break;
+                case ComparisonType.NotEqual:
+                    conditionSign = " != ";
+                    break;
+            }
+
+            return fieldName + conditionSign + Value.GetValidToConditionValue();
         }
 
         public override string ToString()
