@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
+using ORM.Attributes;
 
 namespace ORM.Util
 {
@@ -26,7 +27,10 @@ namespace ORM.Util
         /// </summary>
         public string GetCondition()
         {
-            return "";
+            FieldNameAttribute fieldNameAttr = Property.GetCustomAttribute<FieldNameAttribute>();
+            string fieldName = fieldNameAttr.Name;
+
+            return fieldName + " = " + Value.GetValidToConditionValue();
         }
 
         public override string ToString()

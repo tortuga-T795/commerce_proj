@@ -76,5 +76,15 @@ namespace ORM.Util
 
             return propInfo.GetValue(obj, null).ToString();
         }
+
+        public static string GetValidToConditionValue(this object obj)
+        {
+            if (obj.GetType() == typeof(string))
+            {
+                return "'" + obj.ToString() + "'";
+            }
+
+            return obj.ToString();
+        }
     }
 }
