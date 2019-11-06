@@ -21,6 +21,11 @@ namespace ORM.Util
             return attribute.Name;
         }
 
+        public static PropertyInfo GetPublicProperty(this object obj, string propName)
+        {
+            return obj.GetType().GetProperty(propName, BindingFlags.Public | BindingFlags.Instance);
+        }
+
         /// <summary>
         /// Сие говницо не факт что работает, потому что проверить это можно на готовом проекте с подключением к бд,
         /// а так как мне в падлу сейчас это делать, то сделаю потом :)
@@ -62,14 +67,14 @@ namespace ORM.Util
             return attr.Name;
         }
 
-        public static string GetValidToConditionFieldValue(this PropertyInfo propInfo, object obj)
+        public static string GetValidToConditionFieldValue(this PropertyInfo propInfo, DatabaseObject obj)
         {
             if(propInfo.PropertyType == typeof(string))
             {
                 return "'" + propInfo.GetValue(obj, null).ToString() + "'";
             }
 
-            return null;
+            return propInfo.GetValue(obj, null).ToString();
         }
     }
 }

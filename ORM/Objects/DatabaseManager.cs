@@ -39,12 +39,9 @@ namespace ORM.Objects
             ConnectionString = ConfigurationSettings.AppSettings.Get("mainDbConnectionString");
         }
 
-        // DatabaseData<T>
-        public void GetData<T, RepoType>(RepoType repo) where T : DatabaseObject, new() where RepoType : IRepository<T>
+        private DataSet LoadDataByQuery(string query, string tableName)
         {
-            string tableName = typeof(T).GetTableName();
-            string query = "SELECT * FROM " + tableName;
-            DataSet dataSet = new DataSet();
+            DataSet res = new DataSet();
 
             using (SqlConnection connection = new SqlConnection(this.ConnectionString))
             {
@@ -52,14 +49,24 @@ namespace ORM.Objects
 
                 using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
                 {
-                    adapter.FillSchema(dataSet, SchemaType.Source, tableName);
-                    adapter.Fill(dataSet, tableName);
+                    adapter.FillSchema(res, SchemaType.Source, tableName);
+                    adapter.Fill(res, tableName);
                 }
 
                 connection.Close();
             }
 
-            repo.Data = new DatabaseData<T>(dataSet);
+            return res;
+        }
+
+        // DatabaseData<T>
+        public void GetData<T, RepoType>(RepoType repo) where T : DatabaseObject, new() where RepoType : IRepository<T>
+        {
+            string tableName = typeof(T).GetTableName();
+            string query = "SELECT * FROM " + tableName;
+            DataSet set = LoadDataByQuery(query, tableName);
+
+            repo.Data = new DatabaseData<T>(set);
         }
 
         /// <summary>
@@ -67,7 +74,8 @@ namespace ORM.Objects
         /// </summary>
         /// <typeparam name="T">Needed DatabaseObject</typeparam>
         /// <param name="conditionProp">Property to create SELECT condition</param>
-        public DatabaseData<T> GetData<T>(PropertyInfo conditionProp) where T : DatabaseObject, new()
+        /// <param name="conditionPropValue">value of condition property</param>
+        public DatabaseData<T> GetData<T>(PropertyInfo conditionProp, object conditionPropValue) where T : DatabaseObject, new()
         {
             string tableName = typeof(T).GetTableName();
             string fieldName = conditionProp.GetFieldName();
@@ -81,9 +89,13 @@ namespace ORM.Objects
                 throw new ArgumentNullException("fieldName");
             }
 
-            string query = "SELECT * FROM " + tableName + " WHERE " + fieldName + " = ";
+            T condInstance = new T();
+            conditionProp.SetValue(condInstance, conditionPropValue, null);
+            string query = "SELECT * FROM " + tableName + " WHERE " + fieldName + " = " + conditionProp.GetValidToConditionFieldValue(condInstance);
 
-            return null;
+            DataSet set = LoadDataByQuery(query, tableName);
+
+            return new DatabaseData<T>(set);
         }
 
         public void Commit<T>(DatabaseData<T> data) where T : DatabaseObject, new()

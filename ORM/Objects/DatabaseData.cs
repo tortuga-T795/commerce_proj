@@ -39,6 +39,13 @@ namespace ORM.Objects
             return res;
         }
 
+        public IEnumerable<T> Select(IEnumerable<DatabaseDataSelectCondition<T>> conditions)
+        {
+            string condition = "";
+
+            return null;
+        }
+
         public T Create(T obj)
         {
             DataRow newRow = this.Data.Tables[this.TableName].NewRow();
