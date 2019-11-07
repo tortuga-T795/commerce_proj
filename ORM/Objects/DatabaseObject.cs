@@ -19,7 +19,7 @@ namespace ORM.Objects
             {
                 // ыы
                 // вижла подсказала, сам я слишком тупой чтобы так написать)))
-                row = value ?? throw new ArgumentException(string.Format("In setter of {0}.Row value is null", GetType().ToString()));
+                row = value ?? throw new ArgumentException(string.Format("In setter of {0}.Row value is null", GetType()));
             }
         }
 
@@ -60,6 +60,9 @@ namespace ORM.Objects
             this.Attach(this.Row);
         }
 
+        /// <summary>
+        /// Geting valid condition to select row from DataTable
+        /// </summary>
         public string GetCondition()
         {
             PropertyInfo primaryKeyProperty = this.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance).Where((info) =>

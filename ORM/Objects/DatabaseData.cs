@@ -39,11 +39,11 @@ namespace ORM.Objects
             return res;
         }
 
-        public IEnumerable<T> Select(IEnumerable<DatabaseDataSelectCondition<T>> conditions)
+        public IEnumerable<T> Select(DatabaseDataSelectConditionsCollection<T> conditions)
         {
-            string condition = "";
+            string condition = conditions.GetCondition();
 
-            return null;
+            return Select(condition);
         }
 
         public T Create(T obj)
@@ -60,12 +60,15 @@ namespace ORM.Objects
 
         public void Delete(T obj)
         {
-            string condition = obj.GetCondition();
-            DataRow row = this.Data.Tables[this.TableName].Select(condition)[0];
+            //string condition = obj.GetCondition();
+            //DataRow row = this.Data.Tables[this.TableName].Select(condition)[0];
 
-            row.Delete();
+            //row.Delete();
+            // не понимаю почему я написал так как сверху, ведь можно просто сделать вот так
+            obj.Row.Delete();
         }
 
+        // ваще хз, работает ли
         public void Edit(T obj)
         {
             string condition = obj.GetCondition();
@@ -73,7 +76,10 @@ namespace ORM.Objects
 
             obj.Commit();
 
-            row.ItemArray = obj.Row.ItemArray;
+            // и эта хератня тоже скорее всего не нужна, потому что DataRow это класс и все ссылки ведут всё равно к 
+            // одному и тому же месту, и в методе Commit будут заданы нужные значения и усё
+            // капец я даунич оказывается
+            //row.ItemArray = obj.Row.ItemArray;
             /// // сия параща нах не сдалась, но это ещё не точно)
             /// //// это тоже хз работает ли, но прикол тут в том, что данные изменённого объекта
             /// //// записываются в его Row, и потом нужно изменить эти данные в DataSet'е ну и вот
