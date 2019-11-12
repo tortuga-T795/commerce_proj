@@ -14,7 +14,6 @@ namespace ORM.Objects
         private static readonly object lockObj = new object();
         private static DatabaseManager instance;
 
-        [Obsolete]
         public static DatabaseManager Instance
         {
             get
@@ -33,10 +32,9 @@ namespace ORM.Objects
 
         private string ConnectionString { get; set; }
 
-        [Obsolete]
         public DatabaseManager()
         {
-            ConnectionString = ConfigurationSettings.AppSettings.Get("mainDbConnectionString");
+            ConnectionString = ConfigurationManager.AppSettings["mainDbConnectionString"];
         }
 
         private DataSet LoadDataByQuery(string query, string tableName)

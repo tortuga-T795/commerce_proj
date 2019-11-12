@@ -15,7 +15,6 @@ namespace DepartmentOfCommerceProject.Infrastructure
     {
         public event EventHandler CanExecuteChanged;
 
-        [Obsolete]
         public LoginCommand()
         {
             DatabaseManager.Instance.GetData<AccountType, AccountTypesRepository>(AccountTypesRepository.Instance);

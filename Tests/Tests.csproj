@@ -47,15 +47,23 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="TestConditions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestDatabaseManagerClass.cs" />
+    <Compile Include="TestDatabaseObject.cs" />
+    <Compile Include="TestForeignKeyAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DepartmentOfCommerceProject\DepartmentOfCommerceProject.csproj">
+      <Project>{93390547-032d-4ffd-b2fa-080690757607}</Project>
+      <Name>DepartmentOfCommerceProject</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ORM\ORM.csproj">
       <Project>{a4affcfb-c616-48e5-b38f-9f2029771d05}</Project>
       <Name>ORM</Name>

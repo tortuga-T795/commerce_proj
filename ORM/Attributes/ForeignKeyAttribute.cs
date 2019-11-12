@@ -16,6 +16,13 @@ namespace ORM.Attributes
         // было не object, а IRepository<DatabaseObject>, просто заебало колупаться
         public PropertyInfo RepositoryInstanceProperty { get; private set; }
 
+        public DatabaseData<T> GetRepositoryData<T>() where T : DatabaseObject, new()
+        {
+            var repo = RepositoryInstanceProperty.GetValue(null, null) as IRepository<T>;
+
+            return repo.Data;
+        }
+
         /// <summary>
         /// Сие чудо костыльного образа мышления должно работать так:
         ///     када селектается коллекция каких-та объектов, внутри которых нахоидтся ссыль на етыт объект,

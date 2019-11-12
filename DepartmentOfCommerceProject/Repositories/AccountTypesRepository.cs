@@ -12,6 +12,11 @@ namespace DepartmentOfCommerceProject.Repositories
     public class AccountTypesRepository : IRepository<AccountType>
     {
         #region Singleton
+        static AccountTypesRepository()
+        {
+            instance = new AccountTypesRepository();
+        }
+
         private static readonly object lockObj = new object();
         private static AccountTypesRepository instance;
         public static AccountTypesRepository Instance
@@ -30,9 +35,9 @@ namespace DepartmentOfCommerceProject.Repositories
         }
         #endregion
 
-        public DatabaseData<AccountType> Data { get; set; }
-
         private AccountTypesRepository()
         { }
+
+        public DatabaseData<AccountType> Data { get; set; }
     }
 }
