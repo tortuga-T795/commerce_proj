@@ -5,6 +5,9 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System;
 using System.Reflection;
+using ORM.Attributes;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ORM.Objects
 {
@@ -57,7 +60,6 @@ namespace ORM.Objects
             return res;
         }
 
-        // DatabaseData<T>
         public void GetData<T, RepoType>(RepoType repo) where T : DatabaseObject, new() where RepoType : IRepository<T>
         {
             string tableName = typeof(T).GetTableName();
@@ -65,6 +67,19 @@ namespace ORM.Objects
             DataSet set = LoadDataByQuery(query, tableName);
 
             repo.Data = new DatabaseData<T>(set);
+
+            // ещё нужно загрузить данные для всех таблиц, на которые ссылается данная таблица
+            var relationTables = typeof(T).GetCustomAttributes<RelationTableAttribute>().ToList();
+
+            if (relationTables.Count == 0)
+            {
+                return;
+            }
+
+            foreach (var relationTable in relationTables)
+            {
+
+            }
         }
 
         /// <summary>

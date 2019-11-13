@@ -6,6 +6,7 @@ using DepartmentOfCommerceProject.Repositories;
 namespace DepartmentOfCommerceProject.Infrastructure.BusinessObjects.DatabaseObjects
 {
     [TableName("Accounts")]
+    [RelationTable(typeof(AccountTypesRepository))]
     public class AccountInfo : DatabaseObject
     {
         [PrimaryKey]

@@ -15,6 +15,15 @@ namespace ORM.Attributes
         public Type RepositoryType { get; private set; }
         // было не object, а IRepository<DatabaseObject>, просто заебало колупаться
         public PropertyInfo RepositoryInstanceProperty { get; private set; }
+        public bool NeedToDownloadData
+        {
+            get
+            {
+                var repo = RepositoryInstanceProperty.GetValue(null, null) as IRepository<DatabaseObject>;
+
+                return repo.NeedToDownload;
+            }
+        }
 
         public DatabaseData<T> GetRepositoryData<T>() where T : DatabaseObject, new()
         {

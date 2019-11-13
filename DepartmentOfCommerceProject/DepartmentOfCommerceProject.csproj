@@ -68,6 +68,7 @@
     <Compile Include="Infrastructure\Commands\SelectTreeViewItemCommand.cs" />
     <Compile Include="Infrastructure\TreeViewData.cs" />
     <Compile Include="Repositories\AccountTypesRepository.cs" />
+    <Compile Include="Util\TMessageBox.cs" />
     <Compile Include="ViewModel\LoginWindowViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />

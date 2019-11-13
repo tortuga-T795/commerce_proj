@@ -38,12 +38,13 @@ namespace Tests
                 }
             }
         }
-        #endregion
 
         private TestRepository()
         { }
+        #endregion
 
         public DatabaseData<TestDatabaseObject> Data { get; set; }
+        public bool NeedToDownload { get; set; }
     }
 
     [TestClass]

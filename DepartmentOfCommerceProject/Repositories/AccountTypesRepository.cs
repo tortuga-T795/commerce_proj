@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ORM.Objects;
+﻿using ORM.Objects;
 using ORM.Repositories;
 using DepartmentOfCommerceProject.Infrastructure.BusinessObjects.DatabaseObjects;
 
@@ -33,11 +28,12 @@ namespace DepartmentOfCommerceProject.Repositories
                 }
             }
         }
-        #endregion
 
         private AccountTypesRepository()
         { }
+        #endregion
 
         public DatabaseData<AccountType> Data { get; set; }
+        public bool NeedToDownload { get; set; } = true;
     }
 }
