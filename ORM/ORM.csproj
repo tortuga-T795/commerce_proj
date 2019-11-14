@@ -46,7 +46,6 @@
   <ItemGroup>
     <Compile Include="Attributes\FieldNameAttribute.cs" />
     <Compile Include="Attributes\ForeignKeyAttribute.cs" />
-    <Compile Include="Attributes\ForeignTableAttribute.cs" />
     <Compile Include="Attributes\IAttribute.cs" />
     <Compile Include="Attributes\PrimaryKeyAttribute.cs" />
     <Compile Include="Attributes\ReadOnlyFieldAttribute.cs" />
