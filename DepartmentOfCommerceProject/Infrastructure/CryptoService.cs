@@ -4,7 +4,7 @@ using System.Security.Cryptography;
 
 namespace DepartmentOfCommerceProject.Infrastructure
 {
-    public static class Crypto
+    public static class CryptoService
     {
         public static string GetMd5Hash(string input)
         {

@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.29215.179
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DepartmentOfCommerceProject", "DepartmentOfCommerceProject\DepartmentOfCommerceProject.csproj", "{93390547-032D-4FFD-B2FA-080690757607}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ORM", "ORM\ORM.csproj", "{A4AFFCFB-C616-48E5-B38F-9F2029771D05}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{C2DAA9BB-5ED0-4BE6-88F2-37F96131A818}"
 EndProject
 Global
@@ -19,10 +17,6 @@ Global
 		{93390547-032D-4FFD-B2FA-080690757607}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93390547-032D-4FFD-B2FA-080690757607}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93390547-032D-4FFD-B2FA-080690757607}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A4AFFCFB-C616-48E5-B38F-9F2029771D05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A4AFFCFB-C616-48E5-B38F-9F2029771D05}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A4AFFCFB-C616-48E5-B38F-9F2029771D05}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A4AFFCFB-C616-48E5-B38F-9F2029771D05}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C2DAA9BB-5ED0-4BE6-88F2-37F96131A818}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C2DAA9BB-5ED0-4BE6-88F2-37F96131A818}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2DAA9BB-5ED0-4BE6-88F2-37F96131A818}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -14,7 +14,7 @@
             set
             {
                 IsLoginAdjusted = true;
-                hash = Crypto.GetMd5Hash(value + ":" + pass);
+                hash = CryptoService.GetMd5Hash(value + ":" + pass);
             }
         }
 
@@ -23,7 +23,7 @@
             set
             {
                 IsPassAdjusted = true;
-                hash = Crypto.GetMd5Hash(login + ":" + value);
+                hash = CryptoService.GetMd5Hash(login + ":" + value);
             }
         }
 

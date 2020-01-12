@@ -8,8 +8,8 @@ namespace DepartmentOfCommerceProject.Infrastructure.BusinessObjects
 {
     public enum IconType
     {
-        folder,
-        item
+        Folder,
+        Item
     }
 
     public class TreeViewNode
@@ -32,7 +32,7 @@ namespace DepartmentOfCommerceProject.Infrastructure.BusinessObjects
         /// <summary>
         /// КАСТЫЫЫЫЫЫЫЛЬ
         /// Логика сия говна такова: в MainWindowViewModel валяется команда, но биндингом её не видно в элементе
-        /// TreeView, из-за того, что они байндят эти объеты и команды из ViewModel не видно
+        /// TreeView, из-за того, что они байндят эти объеты и команды из ViewModel
         /// </summary>
         public ICommand Command
         {

@@ -119,10 +119,10 @@
                                         <Image.Style>
                                             <Style TargetType="{x:Type Image}">
                                                 <Style.Triggers>
-                                                    <DataTrigger Binding="{Binding Path=IconType}" Value="{x:Static BusinessObjects:IconType.folder}">
+                                                    <DataTrigger Binding="{Binding Path=IconType}" Value="{x:Static BusinessObjects:IconType.Folder}">
                                                         <Setter Property="Source" Value="{StaticResource folder_picture}" />
                                                     </DataTrigger>
-                                                    <DataTrigger Binding="{Binding Path=IconType}" Value="{x:Static BusinessObjects:IconType.item}">
+                                                    <DataTrigger Binding="{Binding Path=IconType}" Value="{x:Static BusinessObjects:IconType.Item}">
                                                         <Setter Property="Source" Value="{StaticResource list_item_picture}" />
                                                     </DataTrigger>
                                                 </Style.Triggers>

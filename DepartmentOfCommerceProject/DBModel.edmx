@@ -1,0 +1,773 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DepartmentOfCommerceDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Addresses">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="countryId" Type="int" Nullable="false" />
+          <Property Name="cityId" Type="int" Nullable="false" />
+          <Property Name="streetId" Type="int" Nullable="false" />
+          <Property Name="buildingId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Buildings">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="building_number" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="streetId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cities">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cities_name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="countryId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Countries">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="countries_name" Type="nvarchar" MaxLength="60" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LegalEntityTypes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="legal_entity_form" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductionTypes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="type_of_product" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductSuppliers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="supplierName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="legalAddressId" Type="int" Nullable="false" />
+          <Property Name="uniquePayerNumber" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="legalEntityTypeId" Type="int" Nullable="false" />
+          <Property Name="phoneNumber" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Recipients">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="recipientName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="legalAddressId" Type="int" Nullable="false" />
+          <Property Name="uniquePayerNumber" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="legalEntityTypeId" Type="int" Nullable="false" />
+          <Property Name="phoneNumber" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Streets">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="street_name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="citiesId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TypesLists">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="productTypeId" Type="int" Nullable="false" />
+          <Property Name="supplierId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Addresses__build__05D8E0BE">
+          <End Role="Buildings" Type="Self.Buildings" Multiplicity="1" />
+          <End Role="Addresses" Type="Self.Addresses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Buildings">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Addresses">
+              <PropertyRef Name="buildingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Addresses__cityI__03F0984C">
+          <End Role="Cities" Type="Self.Cities" Multiplicity="1" />
+          <End Role="Addresses" Type="Self.Addresses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Addresses">
+              <PropertyRef Name="cityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Addresses__count__02FC7413">
+          <End Role="Countries" Type="Self.Countries" Multiplicity="1" />
+          <End Role="Addresses" Type="Self.Addresses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Addresses">
+              <PropertyRef Name="countryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Addresses__stree__04E4BC85">
+          <End Role="Streets" Type="Self.Streets" Multiplicity="1" />
+          <End Role="Addresses" Type="Self.Addresses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Streets">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Addresses">
+              <PropertyRef Name="streetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Buildings__stree__00200768">
+          <End Role="Streets" Type="Self.Streets" Multiplicity="1" />
+          <End Role="Buildings" Type="Self.Buildings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Streets">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Buildings">
+              <PropertyRef Name="streetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cities__countryI__7A672E12">
+          <End Role="Countries" Type="Self.Countries" Multiplicity="1" />
+          <End Role="Cities" Type="Self.Cities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Cities">
+              <PropertyRef Name="countryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductSu__legal__0A9D95DB">
+          <End Role="LegalEntityTypes" Type="Self.LegalEntityTypes" Multiplicity="1" />
+          <End Role="ProductSuppliers" Type="Self.ProductSuppliers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LegalEntityTypes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ProductSuppliers">
+              <PropertyRef Name="legalEntityTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductSu__legal__0B91BA14">
+          <End Role="Addresses" Type="Self.Addresses" Multiplicity="1" />
+          <End Role="ProductSuppliers" Type="Self.ProductSuppliers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addresses">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ProductSuppliers">
+              <PropertyRef Name="legalAddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Recipient__legal__0E6E26BF">
+          <End Role="LegalEntityTypes" Type="Self.LegalEntityTypes" Multiplicity="1" />
+          <End Role="Recipients" Type="Self.Recipients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LegalEntityTypes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Recipients">
+              <PropertyRef Name="legalEntityTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Recipient__legal__0F624AF8">
+          <End Role="Addresses" Type="Self.Addresses" Multiplicity="1" />
+          <End Role="Recipients" Type="Self.Recipients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addresses">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Recipients">
+              <PropertyRef Name="legalAddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Streets__citiesI__7D439ABD">
+          <End Role="Cities" Type="Self.Cities" Multiplicity="1" />
+          <End Role="Streets" Type="Self.Streets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Streets">
+              <PropertyRef Name="citiesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TypesList__produ__123EB7A3">
+          <End Role="ProductionTypes" Type="Self.ProductionTypes" Multiplicity="1" />
+          <End Role="TypesLists" Type="Self.TypesLists" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductionTypes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TypesLists">
+              <PropertyRef Name="productTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TypesList__suppl__1332DBDC">
+          <End Role="ProductSuppliers" Type="Self.ProductSuppliers" Multiplicity="1" />
+          <End Role="TypesLists" Type="Self.TypesLists" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductSuppliers">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TypesLists">
+              <PropertyRef Name="supplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DepartmentOfCommerceDBModelStoreContainer">
+          <EntitySet Name="Addresses" EntityType="Self.Addresses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Buildings" EntityType="Self.Buildings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cities" EntityType="Self.Cities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Countries" EntityType="Self.Countries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LegalEntityTypes" EntityType="Self.LegalEntityTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductionTypes" EntityType="Self.ProductionTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductSuppliers" EntityType="Self.ProductSuppliers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Recipients" EntityType="Self.Recipients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Streets" EntityType="Self.Streets" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypesLists" EntityType="Self.TypesLists" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Addresses__build__05D8E0BE" Association="Self.FK__Addresses__build__05D8E0BE">
+            <End Role="Buildings" EntitySet="Buildings" />
+            <End Role="Addresses" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Addresses__cityI__03F0984C" Association="Self.FK__Addresses__cityI__03F0984C">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="Addresses" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Addresses__count__02FC7413" Association="Self.FK__Addresses__count__02FC7413">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Addresses" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Addresses__stree__04E4BC85" Association="Self.FK__Addresses__stree__04E4BC85">
+            <End Role="Streets" EntitySet="Streets" />
+            <End Role="Addresses" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Buildings__stree__00200768" Association="Self.FK__Buildings__stree__00200768">
+            <End Role="Streets" EntitySet="Streets" />
+            <End Role="Buildings" EntitySet="Buildings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cities__countryI__7A672E12" Association="Self.FK__Cities__countryI__7A672E12">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Cities" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductSu__legal__0A9D95DB" Association="Self.FK__ProductSu__legal__0A9D95DB">
+            <End Role="LegalEntityTypes" EntitySet="LegalEntityTypes" />
+            <End Role="ProductSuppliers" EntitySet="ProductSuppliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductSu__legal__0B91BA14" Association="Self.FK__ProductSu__legal__0B91BA14">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="ProductSuppliers" EntitySet="ProductSuppliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Recipient__legal__0E6E26BF" Association="Self.FK__Recipient__legal__0E6E26BF">
+            <End Role="LegalEntityTypes" EntitySet="LegalEntityTypes" />
+            <End Role="Recipients" EntitySet="Recipients" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Recipient__legal__0F624AF8" Association="Self.FK__Recipient__legal__0F624AF8">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="Recipients" EntitySet="Recipients" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Streets__citiesI__7D439ABD" Association="Self.FK__Streets__citiesI__7D439ABD">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="Streets" EntitySet="Streets" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TypesList__produ__123EB7A3" Association="Self.FK__TypesList__produ__123EB7A3">
+            <End Role="ProductionTypes" EntitySet="ProductionTypes" />
+            <End Role="TypesLists" EntitySet="TypesLists" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TypesList__suppl__1332DBDC" Association="Self.FK__TypesList__suppl__1332DBDC">
+            <End Role="ProductSuppliers" EntitySet="ProductSuppliers" />
+            <End Role="TypesLists" EntitySet="TypesLists" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DepartmentOfCommerceDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Addresses">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="countryId" Type="Int32" Nullable="false" />
+          <Property Name="cityId" Type="Int32" Nullable="false" />
+          <Property Name="streetId" Type="Int32" Nullable="false" />
+          <Property Name="buildingId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Buildings" Relationship="Self.FK__Addresses__build__05D8E0BE" FromRole="Addresses" ToRole="Buildings" />
+          <NavigationProperty Name="Cities" Relationship="Self.FK__Addresses__cityI__03F0984C" FromRole="Addresses" ToRole="Cities" />
+          <NavigationProperty Name="Countries" Relationship="Self.FK__Addresses__count__02FC7413" FromRole="Addresses" ToRole="Countries" />
+          <NavigationProperty Name="Streets" Relationship="Self.FK__Addresses__stree__04E4BC85" FromRole="Addresses" ToRole="Streets" />
+          <NavigationProperty Name="ProductSuppliers" Relationship="Self.FK__ProductSu__legal__0B91BA14" FromRole="Addresses" ToRole="ProductSuppliers" />
+          <NavigationProperty Name="Recipients" Relationship="Self.FK__Recipient__legal__0F624AF8" FromRole="Addresses" ToRole="Recipients" />
+        </EntityType>
+        <EntityType Name="Buildings">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="building_number" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="streetId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Addresses" Relationship="Self.FK__Addresses__build__05D8E0BE" FromRole="Buildings" ToRole="Addresses" />
+          <NavigationProperty Name="Streets" Relationship="Self.FK__Buildings__stree__00200768" FromRole="Buildings" ToRole="Streets" />
+        </EntityType>
+        <EntityType Name="Cities">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cities_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="countryId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Addresses" Relationship="Self.FK__Addresses__cityI__03F0984C" FromRole="Cities" ToRole="Addresses" />
+          <NavigationProperty Name="Countries" Relationship="Self.FK__Cities__countryI__7A672E12" FromRole="Cities" ToRole="Countries" />
+          <NavigationProperty Name="Streets" Relationship="Self.FK__Streets__citiesI__7D439ABD" FromRole="Cities" ToRole="Streets" />
+        </EntityType>
+        <EntityType Name="Countries">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="countries_name" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Addresses" Relationship="Self.FK__Addresses__count__02FC7413" FromRole="Countries" ToRole="Addresses" />
+          <NavigationProperty Name="Cities" Relationship="Self.FK__Cities__countryI__7A672E12" FromRole="Countries" ToRole="Cities" />
+        </EntityType>
+        <EntityType Name="LegalEntityTypes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="legal_entity_form" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ProductSuppliers" Relationship="Self.FK__ProductSu__legal__0A9D95DB" FromRole="LegalEntityTypes" ToRole="ProductSuppliers" />
+          <NavigationProperty Name="Recipients" Relationship="Self.FK__Recipient__legal__0E6E26BF" FromRole="LegalEntityTypes" ToRole="Recipients" />
+        </EntityType>
+        <EntityType Name="ProductionTypes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="type_of_product" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="TypesLists" Relationship="Self.FK__TypesList__produ__123EB7A3" FromRole="ProductionTypes" ToRole="TypesLists" />
+        </EntityType>
+        <EntityType Name="ProductSuppliers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="supplierName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="legalAddressId" Type="Int32" Nullable="false" />
+          <Property Name="uniquePayerNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="legalEntityTypeId" Type="Int32" Nullable="false" />
+          <Property Name="phoneNumber" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Addresses" Relationship="Self.FK__ProductSu__legal__0B91BA14" FromRole="ProductSuppliers" ToRole="Addresses" />
+          <NavigationProperty Name="LegalEntityTypes" Relationship="Self.FK__ProductSu__legal__0A9D95DB" FromRole="ProductSuppliers" ToRole="LegalEntityTypes" />
+          <NavigationProperty Name="TypesLists" Relationship="Self.FK__TypesList__suppl__1332DBDC" FromRole="ProductSuppliers" ToRole="TypesLists" />
+        </EntityType>
+        <EntityType Name="Recipients">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="recipientName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="legalAddressId" Type="Int32" Nullable="false" />
+          <Property Name="uniquePayerNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="legalEntityTypeId" Type="Int32" Nullable="false" />
+          <Property Name="phoneNumber" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Addresses" Relationship="Self.FK__Recipient__legal__0F624AF8" FromRole="Recipients" ToRole="Addresses" />
+          <NavigationProperty Name="LegalEntityTypes" Relationship="Self.FK__Recipient__legal__0E6E26BF" FromRole="Recipients" ToRole="LegalEntityTypes" />
+        </EntityType>
+        <EntityType Name="Streets">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="street_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="citiesId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Addresses" Relationship="Self.FK__Addresses__stree__04E4BC85" FromRole="Streets" ToRole="Addresses" />
+          <NavigationProperty Name="Buildings" Relationship="Self.FK__Buildings__stree__00200768" FromRole="Streets" ToRole="Buildings" />
+          <NavigationProperty Name="Cities" Relationship="Self.FK__Streets__citiesI__7D439ABD" FromRole="Streets" ToRole="Cities" />
+        </EntityType>
+        <EntityType Name="TypesLists">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="productTypeId" Type="Int32" Nullable="false" />
+          <Property Name="supplierId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ProductionTypes" Relationship="Self.FK__TypesList__produ__123EB7A3" FromRole="TypesLists" ToRole="ProductionTypes" />
+          <NavigationProperty Name="ProductSuppliers" Relationship="Self.FK__TypesList__suppl__1332DBDC" FromRole="TypesLists" ToRole="ProductSuppliers" />
+        </EntityType>
+        <Association Name="FK__Addresses__build__05D8E0BE">
+          <End Role="Buildings" Type="Self.Buildings" Multiplicity="1" />
+          <End Role="Addresses" Type="Self.Addresses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Buildings">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Addresses">
+              <PropertyRef Name="buildingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Addresses__cityI__03F0984C">
+          <End Role="Cities" Type="Self.Cities" Multiplicity="1" />
+          <End Role="Addresses" Type="Self.Addresses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Addresses">
+              <PropertyRef Name="cityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Addresses__count__02FC7413">
+          <End Role="Countries" Type="Self.Countries" Multiplicity="1" />
+          <End Role="Addresses" Type="Self.Addresses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Addresses">
+              <PropertyRef Name="countryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Addresses__stree__04E4BC85">
+          <End Role="Streets" Type="Self.Streets" Multiplicity="1" />
+          <End Role="Addresses" Type="Self.Addresses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Streets">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Addresses">
+              <PropertyRef Name="streetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductSu__legal__0B91BA14">
+          <End Role="Addresses" Type="Self.Addresses" Multiplicity="1" />
+          <End Role="ProductSuppliers" Type="Self.ProductSuppliers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addresses">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ProductSuppliers">
+              <PropertyRef Name="legalAddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Recipient__legal__0F624AF8">
+          <End Role="Addresses" Type="Self.Addresses" Multiplicity="1" />
+          <End Role="Recipients" Type="Self.Recipients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addresses">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Recipients">
+              <PropertyRef Name="legalAddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Buildings__stree__00200768">
+          <End Role="Streets" Type="Self.Streets" Multiplicity="1" />
+          <End Role="Buildings" Type="Self.Buildings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Streets">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Buildings">
+              <PropertyRef Name="streetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cities__countryI__7A672E12">
+          <End Role="Countries" Type="Self.Countries" Multiplicity="1" />
+          <End Role="Cities" Type="Self.Cities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Cities">
+              <PropertyRef Name="countryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Streets__citiesI__7D439ABD">
+          <End Role="Cities" Type="Self.Cities" Multiplicity="1" />
+          <End Role="Streets" Type="Self.Streets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Streets">
+              <PropertyRef Name="citiesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductSu__legal__0A9D95DB">
+          <End Role="LegalEntityTypes" Type="Self.LegalEntityTypes" Multiplicity="1" />
+          <End Role="ProductSuppliers" Type="Self.ProductSuppliers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LegalEntityTypes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ProductSuppliers">
+              <PropertyRef Name="legalEntityTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Recipient__legal__0E6E26BF">
+          <End Role="LegalEntityTypes" Type="Self.LegalEntityTypes" Multiplicity="1" />
+          <End Role="Recipients" Type="Self.Recipients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LegalEntityTypes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Recipients">
+              <PropertyRef Name="legalEntityTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TypesList__produ__123EB7A3">
+          <End Role="ProductionTypes" Type="Self.ProductionTypes" Multiplicity="1" />
+          <End Role="TypesLists" Type="Self.TypesLists" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductionTypes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TypesLists">
+              <PropertyRef Name="productTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TypesList__suppl__1332DBDC">
+          <End Role="ProductSuppliers" Type="Self.ProductSuppliers" Multiplicity="1" />
+          <End Role="TypesLists" Type="Self.TypesLists" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductSuppliers">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TypesLists">
+              <PropertyRef Name="supplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Addresses" EntityType="Self.Addresses" />
+          <EntitySet Name="Buildings" EntityType="Self.Buildings" />
+          <EntitySet Name="Cities" EntityType="Self.Cities" />
+          <EntitySet Name="Countries" EntityType="Self.Countries" />
+          <EntitySet Name="LegalEntityTypes" EntityType="Self.LegalEntityTypes" />
+          <EntitySet Name="ProductionTypes" EntityType="Self.ProductionTypes" />
+          <EntitySet Name="ProductSuppliers" EntityType="Self.ProductSuppliers" />
+          <EntitySet Name="Recipients" EntityType="Self.Recipients" />
+          <EntitySet Name="Streets" EntityType="Self.Streets" />
+          <EntitySet Name="TypesLists" EntityType="Self.TypesLists" />
+          <AssociationSet Name="FK__Addresses__build__05D8E0BE" Association="Self.FK__Addresses__build__05D8E0BE">
+            <End Role="Buildings" EntitySet="Buildings" />
+            <End Role="Addresses" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Addresses__cityI__03F0984C" Association="Self.FK__Addresses__cityI__03F0984C">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="Addresses" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Addresses__count__02FC7413" Association="Self.FK__Addresses__count__02FC7413">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Addresses" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Addresses__stree__04E4BC85" Association="Self.FK__Addresses__stree__04E4BC85">
+            <End Role="Streets" EntitySet="Streets" />
+            <End Role="Addresses" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductSu__legal__0B91BA14" Association="Self.FK__ProductSu__legal__0B91BA14">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="ProductSuppliers" EntitySet="ProductSuppliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Recipient__legal__0F624AF8" Association="Self.FK__Recipient__legal__0F624AF8">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="Recipients" EntitySet="Recipients" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Buildings__stree__00200768" Association="Self.FK__Buildings__stree__00200768">
+            <End Role="Streets" EntitySet="Streets" />
+            <End Role="Buildings" EntitySet="Buildings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cities__countryI__7A672E12" Association="Self.FK__Cities__countryI__7A672E12">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Cities" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Streets__citiesI__7D439ABD" Association="Self.FK__Streets__citiesI__7D439ABD">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="Streets" EntitySet="Streets" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductSu__legal__0A9D95DB" Association="Self.FK__ProductSu__legal__0A9D95DB">
+            <End Role="LegalEntityTypes" EntitySet="LegalEntityTypes" />
+            <End Role="ProductSuppliers" EntitySet="ProductSuppliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Recipient__legal__0E6E26BF" Association="Self.FK__Recipient__legal__0E6E26BF">
+            <End Role="LegalEntityTypes" EntitySet="LegalEntityTypes" />
+            <End Role="Recipients" EntitySet="Recipients" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TypesList__produ__123EB7A3" Association="Self.FK__TypesList__produ__123EB7A3">
+            <End Role="ProductionTypes" EntitySet="ProductionTypes" />
+            <End Role="TypesLists" EntitySet="TypesLists" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TypesList__suppl__1332DBDC" Association="Self.FK__TypesList__suppl__1332DBDC">
+            <End Role="ProductSuppliers" EntitySet="ProductSuppliers" />
+            <End Role="TypesLists" EntitySet="TypesLists" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DepartmentOfCommerceDBModelStoreContainer" CdmEntityContainer="DBContext">
+          <EntitySetMapping Name="Addresses">
+            <EntityTypeMapping TypeName="DepartmentOfCommerceDBModel.Addresses">
+              <MappingFragment StoreEntitySet="Addresses">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="countryId" ColumnName="countryId" />
+                <ScalarProperty Name="cityId" ColumnName="cityId" />
+                <ScalarProperty Name="streetId" ColumnName="streetId" />
+                <ScalarProperty Name="buildingId" ColumnName="buildingId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Buildings">
+            <EntityTypeMapping TypeName="DepartmentOfCommerceDBModel.Buildings">
+              <MappingFragment StoreEntitySet="Buildings">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="building_number" ColumnName="building_number" />
+                <ScalarProperty Name="streetId" ColumnName="streetId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="DepartmentOfCommerceDBModel.Cities">
+              <MappingFragment StoreEntitySet="Cities">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="cities_name" ColumnName="cities_name" />
+                <ScalarProperty Name="countryId" ColumnName="countryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="DepartmentOfCommerceDBModel.Countries">
+              <MappingFragment StoreEntitySet="Countries">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="countries_name" ColumnName="countries_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LegalEntityTypes">
+            <EntityTypeMapping TypeName="DepartmentOfCommerceDBModel.LegalEntityTypes">
+              <MappingFragment StoreEntitySet="LegalEntityTypes">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="legal_entity_form" ColumnName="legal_entity_form" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductionTypes">
+            <EntityTypeMapping TypeName="DepartmentOfCommerceDBModel.ProductionTypes">
+              <MappingFragment StoreEntitySet="ProductionTypes">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="type_of_product" ColumnName="type_of_product" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductSuppliers">
+            <EntityTypeMapping TypeName="DepartmentOfCommerceDBModel.ProductSuppliers">
+              <MappingFragment StoreEntitySet="ProductSuppliers">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="supplierName" ColumnName="supplierName" />
+                <ScalarProperty Name="legalAddressId" ColumnName="legalAddressId" />
+                <ScalarProperty Name="uniquePayerNumber" ColumnName="uniquePayerNumber" />
+                <ScalarProperty Name="legalEntityTypeId" ColumnName="legalEntityTypeId" />
+                <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Recipients">
+            <EntityTypeMapping TypeName="DepartmentOfCommerceDBModel.Recipients">
+              <MappingFragment StoreEntitySet="Recipients">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="recipientName" ColumnName="recipientName" />
+                <ScalarProperty Name="legalAddressId" ColumnName="legalAddressId" />
+                <ScalarProperty Name="uniquePayerNumber" ColumnName="uniquePayerNumber" />
+                <ScalarProperty Name="legalEntityTypeId" ColumnName="legalEntityTypeId" />
+                <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Streets">
+            <EntityTypeMapping TypeName="DepartmentOfCommerceDBModel.Streets">
+              <MappingFragment StoreEntitySet="Streets">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="street_name" ColumnName="street_name" />
+                <ScalarProperty Name="citiesId" ColumnName="citiesId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypesLists">
+            <EntityTypeMapping TypeName="DepartmentOfCommerceDBModel.TypesLists">
+              <MappingFragment StoreEntitySet="TypesLists">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="productTypeId" ColumnName="productTypeId" />
+                <ScalarProperty Name="supplierId" ColumnName="supplierId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
