@@ -1,3 +1,6 @@
+USE DepartmentOfCommerceDB;
+GO
+
 DROP TABLE IF EXISTS TypesLists;
 DROP TABLE IF EXISTS Recipients;
 DROP TABLE IF EXISTS ProductSuppliers;
