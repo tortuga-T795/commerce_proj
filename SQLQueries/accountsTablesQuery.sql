@@ -1,3 +1,6 @@
+USE DepartmentOfCommerceDB;
+GO
+
 DROP TABLE IF EXISTS Accounts
 DROP TABLE IF EXISTS AccountTypes
 GO
