@@ -582,7 +582,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DBContext" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DatabaseContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Addresses" EntityType="Self.Addresses" />
           <EntitySet Name="Buildings" EntityType="Self.Buildings" />
           <EntitySet Name="Cities" EntityType="Self.Cities" />
@@ -651,7 +651,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DepartmentOfCommerceDBModelStoreContainer" CdmEntityContainer="DBContext">
+        <EntityContainerMapping StorageEntityContainer="DepartmentOfCommerceDBModelStoreContainer" CdmEntityContainer="DatabaseContext">
           <EntitySetMapping Name="Addresses">
             <EntityTypeMapping TypeName="DepartmentOfCommerceDBModel.Addresses">
               <MappingFragment StoreEntitySet="Addresses">
